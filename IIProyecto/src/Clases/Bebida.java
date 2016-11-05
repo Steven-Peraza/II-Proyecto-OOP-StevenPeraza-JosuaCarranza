@@ -24,6 +24,7 @@ public class Bebida {
         this.precio = precio;
         this.miliLitros = miliLitros;
         this.vecesConsumido = vecesConsumido;
+        
     }
 
     // se obtiene el tipo de bebida

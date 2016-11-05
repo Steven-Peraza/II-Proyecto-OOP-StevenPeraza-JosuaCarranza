@@ -36,19 +36,19 @@ public class Factoria {
     }
     
     //retorna instancia tipo cliente
-    public Cliente fabricarCliente(String nombre,String cedula){
+    public static Cliente fabricarCliente(String nombre,String cedula){
     
         return new Cliente(nombre,cedula); // se retorna una instancia de cliente
     }
     
      //retorna instancia tipo cocinero
-    public Cocinero fabricarCocinero(String nombre,String cedula){
+    public static Cocinero fabricarCocinero(String nombre,String cedula){
     
         return new Cocinero(nombre,cedula); // se retorna una instancia de cocinero con los datos recibidos
     }
    
      //retorna instancia tipo mesero
-    public Mesero fabricarMesero(String nombre,String cedula){
+    public static Mesero fabricarMesero(String nombre,String cedula){
     
         return new Mesero(nombre,cedula); // se retorna una instancia de mesero con los datos recibidos
     }
