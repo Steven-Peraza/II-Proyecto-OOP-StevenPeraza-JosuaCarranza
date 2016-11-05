@@ -12,44 +12,47 @@ package Clases;
 public class Empleado extends Persona{
     
     //atributos
+    private String direccion;
+    private String correo;
+    private String telefono;
     
-    private String idiomas;
-    private int cantidadMesasAtendidas=0; //para conocer cuantas mesas ha atendido el mesero
-    
+    //constructor
     public Empleado(String nombre, String cedula) {
         super(nombre, cedula);
     }
 
-    public String getIdiomas() {
-        return idiomas;
+    //metodos set y get
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setIdiomas(String idiomas) {
-        this.idiomas = idiomas;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public int getCantidadMesasAtendidas() {
-        return cantidadMesasAtendidas;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setCantidadMesasAtendidas(int cantidadMesasAtendidas) {
-        this.cantidadMesasAtendidas = cantidadMesasAtendidas;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public Orden tomarOrden(int numMesa){
-    
-    
+    public String getTelefono() {
+        return telefono;
     }
-    
-    
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     @Override
     public String toString() {
-        return super.toString()+"Empleado{" + "idiomas=" + idiomas + ", cantidadMesasAtendidas=" + cantidadMesasAtendidas + '}';
+        return super.toString()+"Empleado{" + "direccion=" + direccion + ", correo=" + correo + ", telefono=" + telefono + '}';
     }
+    
+    
 
-  
     
-    
-    
-    
+
 }

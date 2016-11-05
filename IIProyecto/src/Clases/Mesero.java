@@ -11,8 +11,40 @@ package Clases;
  */
 public class Mesero extends Empleado{
     
+     private String idiomas;
+    private int cantidadMesasAtendidas=0; //para conocer cuantas mesas ha atendido el mesero
+    
     public Mesero(String nombre, String cedula) {
         super(nombre, cedula);
     }
+
+    public String getIdiomas() {
+        return idiomas;
+    }
+
+    public void setIdiomas(String idiomas) {
+        this.idiomas = idiomas;
+    }
+
+    public int getCantidadMesasAtendidas() {
+        return cantidadMesasAtendidas;
+    }
+
+    public void setCantidadMesasAtendidas(int cantidadMesasAtendidas) {
+        this.cantidadMesasAtendidas = cantidadMesasAtendidas;
+    }
+
+    public Orden tomarOrden(int numMesa){
+    
+    
+     return null;
+    }
+
+    @Override
+    public String toString() {
+        return "Mesero{" + "idiomas=" + idiomas + ", cantidadMesasAtendidas=" + cantidadMesasAtendidas + '}';
+    }
+    
+    
     
 }

@@ -5,6 +5,8 @@
  */
 package Clases;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Josua
@@ -15,6 +17,9 @@ public class Cocinero extends Empleado{
     private String especialidad;
     private int cantidadPlatilosCocinados=0;
     private int cantidadBebidasPreparadas=0;
+    
+    private ArrayList <Plato> platosPorCocinar; //contiene los platos qe esta haciendo el cocinero
+    private ArrayList <Bebida> bebidasPorPreparar; //contene las bebidas pendientes del cocinero
     
     
     public Cocinero(String nombre, String cedula) {
@@ -48,6 +53,16 @@ public class Cocinero extends Empleado{
         this.cantidadBebidasPreparadas = cantidadBebidasPreparadas;
     }
 
+    //pone el estado del platillo en listo, y lo elimina de la lista del cocinero
+    public void cocinarPlatillo(Plato plato){
+    
+    }
+    
+    //funcion con la que el cocinero visualiza las ordenes
+    public void verOrdenes(Orden orden){
+    
+    }
+    
     @Override
     public String toString() {
         return super.toString()+"Cocinero{" + "especialidad=" + especialidad + ", cantidadPlatilosCocinados=" + cantidadPlatilosCocinados + ", cantidadBebidasPreparadas=" + cantidadBebidasPreparadas + '}';
