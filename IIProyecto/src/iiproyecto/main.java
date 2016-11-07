@@ -5,6 +5,9 @@
  */
 package iiproyecto;
 
+import Clases.Cliente;
+import Clases.Factoria;
+
 /**
  *
  * @author Josua
@@ -16,6 +19,8 @@ public class main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+      
+        
     }
     
 }

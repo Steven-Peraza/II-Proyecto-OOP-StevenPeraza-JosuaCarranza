@@ -21,6 +21,8 @@ public class Persona {
         this.cedula = cedula;
     }
 
+    //metodos de set y get
+    
     public String getNombre() {
         return nombre;
     }

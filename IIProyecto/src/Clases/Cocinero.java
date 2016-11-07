@@ -21,11 +21,12 @@ public class Cocinero extends Empleado{
     private ArrayList <Plato> platosPorCocinar; //contiene los platos qe esta haciendo el cocinero
     private ArrayList <Bebida> bebidasPorPreparar; //contene las bebidas pendientes del cocinero
     
-    
+    //constructor
     public Cocinero(String nombre, String cedula) {
         super(nombre, cedula);
     }
    
+    //metodos set y get
    //se obtiene la especialidad, del cocinero 
     public String getEspecialidad() {
         return especialidad;
@@ -55,6 +56,17 @@ public class Cocinero extends Empleado{
 
     //pone el estado del platillo en listo, y lo elimina de la lista del cocinero
     public void cocinarPlatillo(Plato plato){
+        
+        for (int i=0;i<this.platosPorCocinar.size();i++){
+        
+        
+            if ((this.platosPorCocinar.get(i).getNombre().equals(plato.getNombre()))&&(this.platosPorCocinar.get(i).getNumero()==plato.getNumero())){
+            
+                this.platosPorCocinar.get(i).setEstado("Listo"); //se coloca como preparado
+                break;
+            }
+        
+        }
     
     }
     

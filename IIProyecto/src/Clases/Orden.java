@@ -21,11 +21,13 @@ public class Orden {
     private Mesero mesero; //relacion con mesero
     private ArrayList <Plato> platos; //lista de platillos pedidos
     private ArrayList <Bebida> bebidas; //lista de bebidas pedidas
-    private Pago pago; //el pago a realizar
+    private Pago pago=null; //el pago a realizar
     
     //constructor
     public Orden(int numeroMesa) {
         this.numeroMesa = numeroMesa;
+        platos=new ArrayList();
+        bebidas=new ArrayList();
     }
 
     //metodos get y set de cada atributo
@@ -103,17 +105,21 @@ public class Orden {
     //agrega un plato nuevo al arreglo de platos
     public void agregarPlatoNuevo(Plato plato){
     
+        this.platos.add(plato);
     }
 
     //agrega una bebida a la orden
     public void agregarBebida (Bebida bebida){
-    
-    
+        
+         this.bebidas.add(bebida);
     }
     
     //agrega un plato que ya se encuentra en el menu
     public void agregarPlato(Plato plato){
     
+        this.platos.add(plato);
     }
 
+    
+    
 }
