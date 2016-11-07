@@ -35,7 +35,7 @@ public class Factoria {
         
     }
     
-    //retorna instancia tipo cliente
+    //retorna instancia tipo cliente, accedida sin hacer una instancia
     public static Cliente fabricarCliente(String nombre,String cedula){
     
         return new Cliente(nombre,cedula); // se retorna una instancia de cliente

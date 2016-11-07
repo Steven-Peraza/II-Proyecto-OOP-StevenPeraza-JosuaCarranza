@@ -28,8 +28,8 @@ public class Restaurante {
     private Menu menu; //el menu del restaurante
     
     private ArrayList cola; //para almacenar temporalmente las ordenes pendientes
-    //constructor
-
+    
+//constructor
     public Restaurante(String logo, String nombre, String telefono, String direccion, String correo) {
         this.logo = logo;
         this.nombre = nombre;
@@ -140,27 +140,65 @@ public class Restaurante {
     
     //se pregunta si existe una mesa con la capacidad requerida
     public boolean existeMesa(int cantidadClientes){
+        
+        for (int i=0;i<this.mesas.size();i++){
+        
+            //si hay mesa y no esta ocupada
+            if ((this.mesas.get(i).getCapacidad()>=cantidadClientes)&&(this.mesas.get(i).getEstado()!=true)){
+            
+                return true; //si hay mesa
+            }
+        }
    
         return false;
     }
     
     //conocer el estado de una mesa en especifico
     public boolean preguntarEstadoMesa(int numeroMesa){
-    
-    return false;
+        
+         for (int i=0;i<this.mesas.size();i++){
+        
+            //si es la mesa se devuelve su estado
+            if (this.mesas.get(i).getNumero()==numeroMesa){
+                   
+                return this.mesas.get(i).getEstado(); //devuelve estado de mesa
+            }          
     }
-    
+         
+         return false;
+    }
+      
     //colocar el estado de una mesa a ocupado
     public void ocuparMesa(int numeroMesa){
     
         
+    for (int i=0;i<this.mesas.size();i++){
+        
+            //si es la mesa se ocupa
+            if (this.mesas.get(i).getNumero()==numeroMesa){
+                 
+                this.mesas.get(i).setEstado(true); //se ocupa la mesa
+                break;
+    }
+        
+    }
     }
     
     //colocar estado de una mesa a desocupado
     public void desocuparMesa(int numeroMesa){
     
+      for (int i=0;i<this.mesas.size();i++){
+        
+            //si es la mesa se ocupa
+            if (this.mesas.get(i).getNumero()==numeroMesa){
+                 
+                this.mesas.get(i).setEstado(false); //desocupar la mesa
+                break;
+    }
         
     }
+    }    
+    
     
     //registra cliente, boolean para saber si se inserto con exito
     public boolean registrarCliente(Cliente cliente){

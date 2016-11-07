@@ -11,13 +11,16 @@ package Clases;
  */
 public class Cliente extends Persona {
     
+    //atributos
     private int visitasRealizadas =0; //variable para conocer la frecuencia con que asiste el cliente
     
+    //constructor
     public Cliente(String nombre, String cedula) {
         super(nombre, cedula);
         
     }
 
+    //metodos set y get
     // se obtiene la cantidad de visitas que ha hecho
     public int getVisitasRealizadas() {
         return visitasRealizadas;

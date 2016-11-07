@@ -28,6 +28,7 @@ public class Mesa {
         lista=new ArrayList(); //inicializar arreglo
     }
 
+    //metodos set y get
     public int getNumero() {
         return numero;
     }

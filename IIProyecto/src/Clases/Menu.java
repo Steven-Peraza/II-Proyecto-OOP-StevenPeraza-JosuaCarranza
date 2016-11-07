@@ -13,16 +13,18 @@ import java.util.ArrayList;
  */
 public class Menu {
     
+    //atributos
     private int cantidadPlatillos=0;
     private  int cantidadBebidas=0;
     private ArrayList <Plato> platos; //platos disponibles en el restaurante
     private ArrayList <Bebida> bebidas; //bebidas disponibles en el restaurante
     
-    
+    //constructor
     public Menu() {
         
     }
 
+    //metodos set y get
     public int getCantidadPlatillos() {
         return cantidadPlatillos;
     }
@@ -40,41 +42,100 @@ public class Menu {
     }
 
     public boolean agregarPlatillo(Plato plato){
-    
-    return true;
+        
+        for (int i=0;i<this.platos.size();i++){
+        
+            if (this.platos.get(i).getNombre().equals(plato.getNombre())){ //si el platillo ya existe
+                return false; //insercion no exitosa
+                
+            }
+            
+        }
+        
+        this.platos.add(plato); //se agrega el plato
+        return true;
     }
     
     // se recibe un objeto bebida y se agrega a la lista si no se encuentra ya en el menu
     public boolean agregarBebida(Bebida bebida){
-    
-    return true;
+        
+          for (int i=0;i<this.bebidas.size();i++){
+        
+            if (this.bebidas.get(i).getNombre().equals(bebida.getNombre())){ //si el platillo ya existe
+                return false; //insercion no exitosa
+                
+            }
+            
+        }
+        
+        this.bebidas.add(bebida); //se agrega bebida
+        return true;
     }
     
     public boolean eliminarPlatillo(Plato plato){
-    return true;
-    
+        
+         for (int i=0;i<this.platos.size();i++){
+        
+            if (this.platos.get(i).getNombre().equals(plato.getNombre())){ //si es el platillo
+                this.platos.remove(i); //se elimina
+                return true;  //eliminar exitoso
+                
+            }
+            
+        }
+   
+        return false; // no se elimino
+       
     }
     
      public boolean eliminarBebida(Bebida bebida){
-    return true;
+         
+         
+          for (int i=0;i<this.bebidas.size();i++){
+        
+            if (this.bebidas.get(i).getNombre().equals(bebida.getNombre())){ //si el platillo ya existe
+               this.bebidas.remove(i);
+                return true; //eliminar exitosa
+                
+            }
+            
+        }
+        
+        return false; //no se elimino
+   
     
     }
      
      public Plato buscarPlatillo(String nombre){
-     
-     return null;
+         
+           for (int i=0;i<this.platos.size();i++){
+        
+            if (this.platos.get(i).getNombre().equals(nombre)){ //si el platillo ya existe
+                return this.platos.get(i); // se retorna el plato
+                
+            }
+            
+        }
+        
+        return null;
+
      }
      
      public Bebida buscarBebida(String nombre){
+         
+                  for (int i=0;i<this.bebidas.size();i++){
+        
+            if (this.bebidas.get(i).getNombre().equals(nombre)){ //si el platillo ya existe
+                return this.bebidas.get(i); // se retorna el plato
+                
+            }
+            
+        }
+        
+        return null;
      
-     return null;
      }
      
-     
-     
-    
-    
-    
     @Override
     public String toString() {
         return "Menu{" + "cantidadPlatillos=" + cantidadPlatillos + ", cantidadBebidas=" + cantidadBebidas + '}';
