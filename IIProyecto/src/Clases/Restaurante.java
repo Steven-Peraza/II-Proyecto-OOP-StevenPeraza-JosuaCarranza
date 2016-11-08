@@ -209,17 +209,47 @@ public class Restaurante {
     }
     }    
     
+     //busca cliente a partir de la cedula
+    public Cliente buscarCliente(int cedula){
+        
+        for (int i=0;i<this.clientes.size();i++){
+            
+            if (this.clientes.get(i).getCedula().equals(String.valueOf(cedula))){
+                return this.clientes.get(i);
+            }
+        }
+  
+        return null;
+    }
     
-    //registra cliente, boolean para saber si se inserto con exito
+    
+     //registra cliente, boolean para saber si se inserto con exito
     public boolean registrarCliente(Cliente cliente){
     
-    return false;
+        for (int i=0;i<this.clientes.size();i++){
+        
+            if (this.clientes.get(i).getCedula().equals(cliente.getCedula())){
+             return false;
+            }
+        }
+        
+    this.clientes.add(cliente); // se agrega
+    return true;
     }
     
      //registra empleado, boolean para saber si se inserto con exito
     public boolean registrarEmpleado(Empleado empleado){
-    
-    return false;
+        
+         for (int i=0;i<this.empleados.size();i++){
+        
+            if (this.empleados.get(i).getCedula().equals(empleado.getCedula())){
+             return false;
+            }
+        }
+        
+    this.empleados.add(empleado); // se agrega
+    return true;
+ 
     }
     
     //con el numero de cedula se busca y se elimina el empleado
