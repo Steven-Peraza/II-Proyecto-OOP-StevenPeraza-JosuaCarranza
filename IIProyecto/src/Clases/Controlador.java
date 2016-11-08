@@ -15,11 +15,18 @@ import java.awt.event.ActionListener;
 public class Controlador implements ActionListener{
 
     Restaurante instanciaRestaurante; //instancia que hace de modelo en el mvc;
-    
+    //Vista instanciaVista; //luego debe asociarse a una ventana 
     
     @Override
     public void actionPerformed(ActionEvent ae) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public String toString() {
+        return "Controlador{" + "nombreRestaurante=" + instanciaRestaurante.getNombre() + '}';
+    }
+    
+    
     
 }

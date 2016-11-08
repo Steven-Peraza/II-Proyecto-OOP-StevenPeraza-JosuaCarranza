@@ -100,24 +100,29 @@ public class Orden {
         this.bebidas.add(bebidas);
     }
     
+    //metodos adicionales
     
-    
-    //agrega un plato nuevo al arreglo de platos
+    //agrega un plato nuevo al arreglo de platos, recibe como parametro objeto tipo plato
     public void agregarPlatoNuevo(Plato plato){
     
         this.platos.add(plato);
     }
 
-    //agrega una bebida a la orden
+    //agrega una bebida a la orden, recibe como parametro objeto bebida
     public void agregarBebida (Bebida bebida){
         
          this.bebidas.add(bebida);
     }
     
-    //agrega un plato que ya se encuentra en el menu
+    //agrega un plato que ya se encuentra en el menu a la orden, recibe objeto tipo plato
     public void agregarPlato(Plato plato){
     
         this.platos.add(plato);
+    }
+
+    @Override
+    public String toString() {
+        return "Orden{" + "numeroMesa=" + numeroMesa + ", cantidadBebidas=" + cantidadBebidas + ", cantidadPlatos=" + cantidadPlatos + ", estado=" + estado + ", mesero=" + mesero.getNombre() + ", platos=" + platos.size() + ", bebidas=" + bebidas.size() + ", pago=" + pago.getMontoTotal() + '}';
     }
 
     

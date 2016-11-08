@@ -53,5 +53,13 @@ public class Factura {
     void mostrarDetalles (){
         
     }
+
+    @Override
+    public String toString() {
+        return "Factura{" + "fechaYHora=" + fechaYHora + ", formaPago=" + formaPago + ", cliente=" + cliente.getNombre() + '}';
+    }
+    
+    
+    
     
 }

@@ -16,7 +16,7 @@ public class Mesa {
    //atributos
    private int numero;
    private int capacidad;
-   private boolean estado;
+   private boolean estado; //true =ocupada, false=disponible
    
    private Orden orden;
    private ArrayList <Cliente> lista;
@@ -72,7 +72,7 @@ public class Mesa {
     
     
     
-    //busca un cliente en la mesa
+    //busca un cliente en la mesa a partir de la cedula
     public Cliente buscarCliente(int cedula){
     
         for(int i=0;i<this.lista.size();i++){
@@ -86,7 +86,7 @@ public class Mesa {
     
     }
     
-    //elimina los clientes qye existan en la lista
+    //elimina los clientes que existan en la lista
     public void limpiarMesa(){
         
         this.lista.clear(); //se reestablece la lista en blanco
@@ -99,6 +99,13 @@ public class Mesa {
         this.lista.add(cliente); //se agrega el cliente
     
     }
+
+    @Override
+    public String toString() {
+        return "Mesa{" + "numero=" + numero + ", capacidad=" + capacidad + ", estado=" + estado + ", orden=" + orden + ", lista=" + lista.size()+ '}';
+    }
+    
+    
     
     
     }

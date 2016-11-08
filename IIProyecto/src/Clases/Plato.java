@@ -38,7 +38,7 @@ public class Plato {
     public int getNumero() {
         return numero;
     }
-
+    //se asigna un numero al plato
     public void setNumero(int numero) {
         this.numero = numero;
     }
@@ -67,14 +67,17 @@ public class Plato {
         this.vecesConsumido = vecesConsumido;
     }
 
+    //retorna el arreglo que contiene los ingreddientes del plato
     public String[] getIngredientes() {
         return ingredientes;
     }
 
+    // establece los ingredientes del plato
     public void setIngredientes(String[] ingredientes) {
         this.ingredientes = ingredientes;
     }
 
+    //obtener estado del platillo
     public String getEstado() {
         return estado;
     }
@@ -82,5 +85,12 @@ public class Plato {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "Plato{" + "nombre=" + nombre + ", numero=" + numero + ", precio=" + precio + ", calorias=" + calorias + ", vecesConsumido=" + vecesConsumido + ", ingredientes=" + ingredientes.length + ", estado=" + estado + '}';
+    }
+    
+    
     
 }

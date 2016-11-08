@@ -37,11 +37,12 @@ public class Pago {
     }
     
     //calcula el impuesto de una compra
-    public void calclarImpuesto(){
+    public void calcularImpuesto(){
+      
     
     }
    
-    //una vez realizado el pago se desocupa la mesa
+    //una vez realizado el pago se desocupa la mesa a la que este asociada la orden
     public void desocuparMesa(){
     
     
@@ -56,4 +57,11 @@ public class Pago {
     public void pagoGrupal(){
     
     }
+
+    @Override
+    public String toString() {
+        return "Pago{" + "montoTotal=" + montoTotal + ", factura=" + factura + '}';
+    }
+    
+    
 }

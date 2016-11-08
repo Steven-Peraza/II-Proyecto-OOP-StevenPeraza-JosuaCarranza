@@ -39,7 +39,7 @@ public class MesaTest extends TestCase {
     @Before
     public void setUp() {
         
-        this.mesa=new Mesa(3,4); //mesa 3, capacidad 4
+        this.mesa=new Mesa(3,4); //mesa numero 3, capacidad 4
     }
         
     @After
@@ -50,11 +50,11 @@ public class MesaTest extends TestCase {
     //se prueba funcionamiento del set numero mesa por medio del get
     @Test
     public void testSetNumeroMesa(){
-        int numeroMesa=7;
-        this.mesa.setNumero(numeroMesa);
+        int resultadoEsperado=7;
+        this.mesa.setNumero(resultadoEsperado);
         int resultadoObtenido=this.mesa.getNumero();
         //si exite error muestra el siguiente mensaje
-        assertEquals("Error en la asignacion",numeroMesa,resultadoObtenido);
+        assertEquals("Error en la asignacion",resultadoEsperado,resultadoObtenido);
         
     }
     
@@ -87,11 +87,13 @@ public class MesaTest extends TestCase {
         String cedula="1234";
         Cliente client;
         int resultadoEsperado=1; //tiene que haber un cliente en la lista luego de la insercion
+        Factoria fabrica=new Factoria(); //instancia de fabrica de personas
         //se fabrica un objeto tipo cliente
-        client= Factoria.fabricarCliente(name, cedula);
+        client= fabrica.fabricarCliente(name, cedula);
         this.mesa.agregarCliente(client);
+        int obtenido=this.mesa.getLista().size();
         //se compara con el tamaño del arreglo
-        assertEquals("Error no pudo agregarse el cliente",resultadoEsperado,this.mesa.getLista().size());
+        assertEquals("Error no pudo agregarse el cliente",resultadoEsperado,obtenido);
         
     
     }
@@ -105,12 +107,15 @@ public class MesaTest extends TestCase {
         Cliente client;
         Cliente client2;
         //se fabrica un objeto tipo cliente
-        client= Factoria.fabricarCliente(name, cedula);
+        Factoria fabrica=new Factoria(); //instancia de fabrica de personas
+        client= fabrica.fabricarCliente(name, cedula);
         //se agrega a la lista
         this.mesa.agregarCliente(client);
         client2=this.mesa.buscarCliente(1234); //se busca el cliente
         //se compara si las dos cedulas coinciden para validar una busqueda exitosa
-        assertEquals("Error no se encontro el cliente",client.getCedula(),client2.getCedula());
+        String esperado=client.getCedula();
+        String obtenido=client2.getCedula();
+        assertEquals("Error no se encontro el cliente",esperado,obtenido);
         
     
     }
@@ -122,15 +127,16 @@ public class MesaTest extends TestCase {
         String name="Carla";
         String cedula="1234";
         Cliente client;
+        Factoria fabrica=new Factoria(); //instancia de fabrica de personas
         int resultadoEsperado=0; //se espera que el arreglo quede en cero, sin clientes
         //se fabrica un objeto tipo cliente
-        client= Factoria.fabricarCliente(name, cedula);
+        client= fabrica.fabricarCliente(name, cedula);
         //se agrega a la lista
         this.mesa.agregarCliente(client);
         this.mesa.limpiarMesa(); //se limpia la mesa
-       
+        int obtenido=this.mesa.getLista().size();
         //se compara que el tamaño de la lista sea igual a cero
-        assertEquals("Error no se pudo limpiar el arreglo",resultadoEsperado,this.mesa.getLista().size());
+        assertEquals("Error no se pudo limpiar el arreglo",resultadoEsperado,obtenido);
         
     
     }

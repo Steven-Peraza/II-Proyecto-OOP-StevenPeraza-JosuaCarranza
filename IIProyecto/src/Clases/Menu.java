@@ -21,6 +21,8 @@ public class Menu {
     
     //constructor
     public Menu() {
+        platos=new ArrayList();
+        bebidas=new ArrayList();
         
     }
 
@@ -41,6 +43,25 @@ public class Menu {
         this.cantidadBebidas = cantidadBebidas;
     }
 
+    public ArrayList<Plato> getPlatos() {
+        return platos;
+    }
+
+    public void setPlatos(Plato platos) {
+        this.platos.add(platos);
+    }
+
+    public ArrayList<Bebida> getBebidas() {
+        return bebidas;
+    }
+
+    public void setBebidas(Bebida bebidas) {
+        this.bebidas.add(bebidas);
+    }
+    
+    //metodos adicionales
+    
+    //agrega un plato a la lista , recibe un objeto tipo plato
     public boolean agregarPlatillo(Plato plato){
         
         for (int i=0;i<this.platos.size();i++){
@@ -59,19 +80,22 @@ public class Menu {
     // se recibe un objeto bebida y se agrega a la lista si no se encuentra ya en el menu
     public boolean agregarBebida(Bebida bebida){
         
-          for (int i=0;i<this.bebidas.size();i++){
+         for (int i=0;i<this.bebidas.size();i++){
         
-            if (this.bebidas.get(i).getNombre().equals(bebida.getNombre())){ //si el platillo ya existe
-                return false; //insercion no exitosa
+            if ((this.bebidas.get(i).getPrecio()==bebida.getPrecio())&&(this.bebidas.get(i).getTipo().equals(bebida.getTipo()))){ //si el tipo de bebida ya existe
+               
+                return false; //ya hay bebidas de ese tipo
                 
             }
             
         }
         
-        this.bebidas.add(bebida); //se agrega bebida
+        
+        this.bebidas.add(bebida); //se agrega bebida,
         return true;
     }
     
+    //recibe el plato a eliminar del menu como parametro
     public boolean eliminarPlatillo(Plato plato){
         
          for (int i=0;i<this.platos.size();i++){
@@ -88,12 +112,13 @@ public class Menu {
        
     }
     
+    //recibe la bebida a eliminar como parametro
      public boolean eliminarBebida(Bebida bebida){
          
          
           for (int i=0;i<this.bebidas.size();i++){
         
-            if (this.bebidas.get(i).getNombre().equals(bebida.getNombre())){ //si el platillo ya existe
+            if ((this.bebidas.get(i).getPrecio()==bebida.getPrecio())&&(this.bebidas.get(i).getTipo().equals(bebida.getTipo()))){ //si el platillo ya existe
                this.bebidas.remove(i);
                 return true; //eliminar exitosa
                 
@@ -106,6 +131,8 @@ public class Menu {
     
     }
      
+     //busca un platillo a partir del nombre,
+     // y lo devuelve
      public Plato buscarPlatillo(String nombre){
          
            for (int i=0;i<this.platos.size();i++){
@@ -121,11 +148,12 @@ public class Menu {
 
      }
      
-     public Bebida buscarBebida(String nombre){
+     //busca una bebida, recibe el tipo de bebida y su precio como parametro
+     public Bebida buscarBebida(String tipo,int precio){
          
                   for (int i=0;i<this.bebidas.size();i++){
         
-            if (this.bebidas.get(i).getNombre().equals(nombre)){ //si el platillo ya existe
+            if ((this.bebidas.get(i).getPrecio()==precio)&&(this.bebidas.get(i).getTipo().equals(tipo))){//si la bebida ya existe
                 return this.bebidas.get(i); // se retorna el plato
                 
             }
@@ -135,13 +163,11 @@ public class Menu {
         return null;
      
      }
-     
+
     @Override
     public String toString() {
-        return "Menu{" + "cantidadPlatillos=" + cantidadPlatillos + ", cantidadBebidas=" + cantidadBebidas + '}';
+        return "Menu{" + "cantidadPlatillos=" + cantidadPlatillos + ", cantidadBebidas=" + cantidadBebidas + ", platos=" + platos.size() + ", bebidas=" + bebidas.size() + '}';
     }
-    
-    
-    
+     
     
 }
