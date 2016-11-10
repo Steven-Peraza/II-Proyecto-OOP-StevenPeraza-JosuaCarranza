@@ -18,17 +18,16 @@ public class Mesa {
    private int capacidad;
    private boolean estado; //true =ocupada, false=disponible
    
-   private Orden orden;
-   private ArrayList <Cliente> lista;
+
 
    //constructor
     public Mesa(int numero, int capacidad) {
         this.numero = numero;
         this.capacidad = capacidad;
-        lista=new ArrayList(); //inicializar arreglo
+   
     }
 
-    //metodos set y get
+    //metodos get y set
     public int getNumero() {
         return numero;
     }
@@ -37,7 +36,6 @@ public class Mesa {
         this.numero = numero;
     }
 
-    //se obtiene cuantos espacios tiene la mesa
     public int getCapacidad() {
         return capacidad;
     }
@@ -54,58 +52,11 @@ public class Mesa {
         this.estado = estado;
     }
 
-    public Orden getOrden() {
-        return orden;
-    }
-
-    public void setOrden(Orden orden) {
-        this.orden = orden;
-    }
-
-    public ArrayList<Cliente> getLista() {
-        return lista;
-    }
-
-    public void setLista(Cliente client) {
-        this.lista.add(client); //agregar cliente
-    }
-    
-    
-    
-    //busca un cliente en la mesa a partir de la cedula
-    public Cliente buscarCliente(int cedula){
-    
-        for(int i=0;i<this.lista.size();i++){
-            int ced=Integer.parseInt(this.lista.get(i).getCedula());
-            if (ced==cedula){
-                return this.lista.get(i); //se retorna el cliente
-            }
-        }
-        
-        return null; //se retorna null si no esta
-    
-    }
-    
-    //elimina los clientes que existan en la lista
-    public void limpiarMesa(){
-        
-        this.lista.clear(); //se reestablece la lista en blanco
-    
-    }
-    
-    // agrega un cliente a la lista de la mesa
-    public void agregarCliente(Cliente cliente){
-        
-        this.lista.add(cliente); //se agrega el cliente
-    
-    }
-
     @Override
     public String toString() {
-        return "Mesa{" + "numero=" + numero + ", capacidad=" + capacidad + ", estado=" + estado + ", orden=" + orden + ", lista=" + lista.size()+ '}';
+        return "Mesa{" + "numero=" + numero + ", capacidad=" + capacidad + ", estado=" + estado + '}';
     }
-    
-    
+
     
     
     }

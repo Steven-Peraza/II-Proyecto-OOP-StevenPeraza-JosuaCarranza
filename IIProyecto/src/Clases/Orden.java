@@ -14,58 +14,17 @@ import java.util.ArrayList;
 public class Orden {
     
     //atributos
-    private int numeroMesa;
-    private int cantidadBebidas ; //total de bebidas pedidas
-    private int cantidadPlatos;   //total de platos
+    
     private boolean estado;  //conocer si esta abierta o ya fue cerrada
     private Mesero mesero; //relacion con mesero
-    private ArrayList <Plato> platos; //lista de platillos pedidos
-    private ArrayList <Bebida> bebidas; //lista de bebidas pedidas
-    private Pago pago=null; //el pago a realizar
-    
+    private ArrayList<Detalle> detalles;
+    private Mesa mesa;
     //constructor
-    public Orden(int numeroMesa) {
-        this.numeroMesa = numeroMesa;
-        platos=new ArrayList();
-        bebidas=new ArrayList();
+    public Orden() {
+      this.detalles=new ArrayList();
     }
 
     //metodos get y set de cada atributo
-
-    public Pago getPago() {
-        return pago;
-    }
-
-    public void setPago(Pago pago) {
-        this.pago = pago;
-    }
-   
-    
-    
-    public int getNumeroMesa() {
-        return numeroMesa;
-    }
-
-    public void setNumeroMesa(int numeroMesa) {
-        this.numeroMesa = numeroMesa;
-    }
-
-    public int getCantidadBebidas() {
-        return cantidadBebidas;
-    }
-
-    public void setCantidadBebidas(int cantidadBebidas) {
-        this.cantidadBebidas = cantidadBebidas;
-    }
-
-    public int getCantidadPlatos() {
-        return cantidadPlatos;
-    }
-
-    public void setCantidadPlatos(int cantidadPlatos) {
-        this.cantidadPlatos = cantidadPlatos;
-    }
-
     public boolean getEstado() {
         return estado;
     }
@@ -82,48 +41,68 @@ public class Orden {
         this.mesero = mesero;
     }
 
-    public ArrayList<Plato> getPlatos() {
-        return platos;
+    public ArrayList<Detalle> getDetalles() {
+        return detalles;
     }
 
-    //se agrega el plato
-    public void setPlatos(Plato platos) {
-        this.platos.add(platos);
+    public void setDetalles(Detalle detalles) {
+        this.detalles.add(detalles);
     }
 
-    public ArrayList<Bebida> getBebidas() {
-        return bebidas;
+    public Mesa getMesa() {
+        return mesa;
     }
 
-    //se agrega la bebida
-    public void setBebidas(Bebida bebidas) {
-        this.bebidas.add(bebidas);
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
     }
+
     
+   
     //metodos adicionales
     
     //agrega un plato nuevo al arreglo de platos, recibe como parametro objeto tipo plato
-    public void agregarPlatoNuevo(Plato plato){
-    
-        this.platos.add(plato);
+    public void agregarPlatoNuevo(Plato plato,int cantidad){
+        Detalle det=new Detalle(cantidad);
+        det.setPlato(plato);
+        this.detalles.add(det);
     }
 
     //agrega una bebida a la orden, recibe como parametro objeto bebida
-    public void agregarBebida (Bebida bebida){
-        
-         this.bebidas.add(bebida);
+    public void agregarBebida (Bebida bebida,int cantidad){
+        Detalle det=new Detalle(cantidad);
+        det.setBebida(bebida);
+        this.detalles.add(det);
+         this.detalles.add(det);
     }
     
     //agrega un plato que ya se encuentra en el menu a la orden, recibe objeto tipo plato
-    public void agregarPlato(Plato plato){
-    
-        this.platos.add(plato);
+    public void agregarPlato(Plato plato,int cantidad){
+        Detalle det=new Detalle(cantidad);
+        det.setPlato(plato);
+        this.detalles.add(det);
+        
     }
 
+    //funcion para desocupar la mesa luego del uso
+    public void desocuparMesa(){
+    
+        this.mesa.setEstado(false);
+    
+    }
+    
+    //para verificar cuando ya todo lo consummido se ha pagado
+    public boolean revisarDetalles(){
+     
+        return true;
+    }
+    
     @Override
     public String toString() {
-        return "Orden{" + "numeroMesa=" + numeroMesa + ", cantidadBebidas=" + cantidadBebidas + ", cantidadPlatos=" + cantidadPlatos + ", estado=" + estado + ", mesero=" + mesero.getNombre() + ", platos=" + platos.size() + ", bebidas=" + bebidas.size() + ", pago=" + pago.getMontoTotal() + '}';
+        return "Orden{" + "estado=" + estado + ", mesero=" + mesero.getNombre() + ", detalles=" + detalles.size() + ", mesa=" + mesa.getNumero() + '}';
     }
+
+   
 
     
     

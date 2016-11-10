@@ -79,66 +79,7 @@ public class MesaTest extends TestCase {
         assertEquals("Error en la asignacion",estate,resultadoObtenido);
         
     }
-     
-    @Test
-    public void testAgregarCliente(){
+       
     
-        String name="Carla";
-        String cedula="1234";
-        Cliente client;
-        int resultadoEsperado=1; //tiene que haber un cliente en la lista luego de la insercion
-        Factoria fabrica=new Factoria(); //instancia de fabrica de personas
-        //se fabrica un objeto tipo cliente
-        client= fabrica.fabricarCliente(name, cedula);
-        this.mesa.agregarCliente(client);
-        int obtenido=this.mesa.getLista().size();
-        //se compara con el tamaño del arreglo
-        assertEquals("Error no pudo agregarse el cliente",resultadoEsperado,obtenido);
-        
-    
-    }
-    
-    //probando metodo de buscar cliente
-     @Test
-    public void testBuscarCliente(){
-    
-        String name="Carla";
-        String cedula="1234";
-        Cliente client;
-        Cliente client2;
-        //se fabrica un objeto tipo cliente
-        Factoria fabrica=new Factoria(); //instancia de fabrica de personas
-        client= fabrica.fabricarCliente(name, cedula);
-        //se agrega a la lista
-        this.mesa.agregarCliente(client);
-        client2=this.mesa.buscarCliente(1234); //se busca el cliente
-        //se compara si las dos cedulas coinciden para validar una busqueda exitosa
-        String esperado=client.getCedula();
-        String obtenido=client2.getCedula();
-        assertEquals("Error no se encontro el cliente",esperado,obtenido);
-        
-    
-    }
-     
-      //probando que el arreglo se limpie correctamente, quede en cero
-     @Test
-    public void testLimpiarMesa(){
-    
-        String name="Carla";
-        String cedula="1234";
-        Cliente client;
-        Factoria fabrica=new Factoria(); //instancia de fabrica de personas
-        int resultadoEsperado=0; //se espera que el arreglo quede en cero, sin clientes
-        //se fabrica un objeto tipo cliente
-        client= fabrica.fabricarCliente(name, cedula);
-        //se agrega a la lista
-        this.mesa.agregarCliente(client);
-        this.mesa.limpiarMesa(); //se limpia la mesa
-        int obtenido=this.mesa.getLista().size();
-        //se compara que el tamaño de la lista sea igual a cero
-        assertEquals("Error no se pudo limpiar el arreglo",resultadoEsperado,obtenido);
-        
-    
-    }
     
 }
