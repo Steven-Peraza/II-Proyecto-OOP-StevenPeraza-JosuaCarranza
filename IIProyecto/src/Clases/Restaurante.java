@@ -368,6 +368,19 @@ public class Restaurante {
     colaPedidos.remove(0);
         
     }
+    
+    //agregar una orden al arreglo temporal
+    public void agregarOrden(Orden orden){
+    
+    
+    }
+    
+    //elimina una orden que ha quedado inactiva luego de un pago
+    public void eliminarOrden(int num){
+    
+    
+    }
+    
 
     @Override
     public String toString() {
