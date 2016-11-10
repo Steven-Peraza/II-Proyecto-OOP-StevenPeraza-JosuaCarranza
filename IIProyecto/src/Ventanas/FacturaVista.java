@@ -28,6 +28,7 @@ public class FacturaVista extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(200,250,200));    //color a la ventana
         this.setForeground(Color.yellow);
+        botonCedula.setBackground(Color.RED);
         //colocando texto a las columnas
         String textosCol[]={"Descripción","Cantidad","Precio Unitario","Impuesto","Total" };
         String filas [][]={}; //necesario para un agregado de filas mas ordenado
