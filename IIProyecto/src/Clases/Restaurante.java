@@ -29,6 +29,7 @@ public class Restaurante {
    
     private Menu menu; //el menu del restaurante
     
+
     private ArrayList<Pedido> colaPedidos; //para almacenar temporalmente las ordenes pendientes
     
 //constructor
@@ -357,6 +358,7 @@ public class Restaurante {
     public void añadirCola(Pedido pedido){
     
         colaPedidos.add(pedido);
+
     }
     
     //se elimina la primera orden en la cola
