@@ -5,9 +5,7 @@
  */
 package iiproyecto;
 
-import Clases.Cliente;
-import Clases.Factoria;
-import Clases.Restaurante;
+import Clases.*;
 import Ventanas.*;
 
 /**
@@ -29,6 +27,33 @@ public class main {
         restaurante.registrarCliente(uno);
         uno=new Cliente("Ian Fabricio","123");
         restaurante.registrarCliente(uno);
+        
+        //agregacion de las mesas
+        Mesa mesa = new Mesa (1,4);
+        restaurante.setMesas(mesa);
+        mesa = new Mesa (2,2);
+        restaurante.setMesas(mesa);
+        mesa = new Mesa (3,4);
+        restaurante.setMesas(mesa);
+        mesa = new Mesa (4,5);
+        restaurante.setMesas(mesa);
+        mesa = new Mesa (5,6);
+        restaurante.setMesas(mesa);
+        mesa = new Mesa (6,4);
+        restaurante.setMesas(mesa);
+        mesa = new Mesa (7,6);
+        restaurante.setMesas(mesa);
+        mesa = new Mesa (8,2);
+        restaurante.setMesas(mesa);
+        mesa = new Mesa (9,3);
+        restaurante.setMesas(mesa);
+        mesa = new Mesa (10,3);
+        restaurante.setMesas(mesa);
+        mesa = new Mesa (11,8);
+        restaurante.setMesas(mesa);
+        
+        
+        
         new VentanaPrin().setVisible(true);
         
         

@@ -22,6 +22,7 @@ public class VentanaPrin extends javax.swing.JFrame {
 
     public VentanaPrin() {
         initComponents();
+        this.setResizable(false);
         this.restaurant= iiproyecto.main.restaurante; //asignar la del main
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(200,250,200));    //color a la ventana
@@ -33,6 +34,18 @@ public class VentanaPrin extends javax.swing.JFrame {
         table.setModel(tabla); //se manda a la tabla visual el modelo 
         
         asignaEventos(new ControladorFactura(this.restaurant,this)); //ceder control al controlador
+        
+        mesa1.setText("Cap: " + String.valueOf(restaurant.getMesas().get(0).getCapacidad()));                                       
+        mesa2.setText("Cap: " + String.valueOf(restaurant.getMesas().get(1).getCapacidad()));                                   
+        mesa3.setText("Cap: " + String.valueOf(restaurant.getMesas().get(2).getCapacidad()));                                      
+        mesa4.setText("Cap: " + String.valueOf(restaurant.getMesas().get(3).getCapacidad()));                                         
+        mesa5.setText("Cap: " + String.valueOf(restaurant.getMesas().get(4).getCapacidad()));                                           
+        mesa6.setText("Cap: " + String.valueOf(restaurant.getMesas().get(5).getCapacidad()));                                         
+        mesa7.setText("Cap: " + String.valueOf(restaurant.getMesas().get(6).getCapacidad()));                                         
+        mesa8.setText("Cap: " + String.valueOf(restaurant.getMesas().get(7).getCapacidad()));                                     
+        mesa9.setText("Cap: " + String.valueOf(restaurant.getMesas().get(8).getCapacidad()));                                       
+        mesa10.setText("Cap: " + String.valueOf(restaurant.getMesas().get(9).getCapacidad()));                                   
+        mesa11.setText("Cap: " + String.valueOf(restaurant.getMesas().get(10).getCapacidad()));
     }
     
     public void asignaEventos(ControladorFactura controlador){
@@ -54,6 +67,40 @@ public class VentanaPrin extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        ButtonMesa1 = new javax.swing.JButton();
+        ButtonMesa2 = new javax.swing.JButton();
+        ButtonMesa3 = new javax.swing.JButton();
+        ButtonMesa4 = new javax.swing.JButton();
+        ButtonMesa7 = new javax.swing.JButton();
+        ButtonMesa6 = new javax.swing.JButton();
+        ButtonMesa5 = new javax.swing.JButton();
+        ButtonMesa8 = new javax.swing.JButton();
+        ButtonMesa9 = new javax.swing.JButton();
+        ButtonMesa10 = new javax.swing.JButton();
+        ButtonMesa11 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        mesa1 = new javax.swing.JLabel();
+        mesa2 = new javax.swing.JLabel();
+        mesa3 = new javax.swing.JLabel();
+        mesa4 = new javax.swing.JLabel();
+        mesa5 = new javax.swing.JLabel();
+        mesa6 = new javax.swing.JLabel();
+        mesa7 = new javax.swing.JLabel();
+        mesa8 = new javax.swing.JLabel();
+        mesa9 = new javax.swing.JLabel();
+        mesa10 = new javax.swing.JLabel();
+        mesa11 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         pago = new javax.swing.JLabel();
@@ -87,18 +134,266 @@ public class VentanaPrin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        ButtonMesa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MesaDescupada.fw.png"))); // NOI18N
+        ButtonMesa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMesa1ActionPerformed(evt);
+            }
+        });
+
+        ButtonMesa2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MesaDescupada.fw.png"))); // NOI18N
+        ButtonMesa2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMesa2ActionPerformed(evt);
+            }
+        });
+
+        ButtonMesa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MesaDescupada.fw.png"))); // NOI18N
+        ButtonMesa3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMesa3ActionPerformed(evt);
+            }
+        });
+
+        ButtonMesa4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MesaDescupada.fw.png"))); // NOI18N
+        ButtonMesa4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMesa4ActionPerformed(evt);
+            }
+        });
+
+        ButtonMesa7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MesaDescupada.fw.png"))); // NOI18N
+        ButtonMesa7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMesa7ActionPerformed(evt);
+            }
+        });
+
+        ButtonMesa6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MesaDescupada.fw.png"))); // NOI18N
+        ButtonMesa6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMesa6ActionPerformed(evt);
+            }
+        });
+
+        ButtonMesa5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MesaDescupada.fw.png"))); // NOI18N
+        ButtonMesa5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMesa5ActionPerformed(evt);
+            }
+        });
+
+        ButtonMesa8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MesaDescupada.fw.png"))); // NOI18N
+        ButtonMesa8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMesa8ActionPerformed(evt);
+            }
+        });
+
+        ButtonMesa9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MesaDescupada.fw.png"))); // NOI18N
+        ButtonMesa9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMesa9ActionPerformed(evt);
+            }
+        });
+
+        ButtonMesa10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MesaDescupada.fw.png"))); // NOI18N
+        ButtonMesa10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMesa10ActionPerformed(evt);
+            }
+        });
+
+        ButtonMesa11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MesaDescupada.fw.png"))); // NOI18N
+        ButtonMesa11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMesa11ActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("Mesa 1");
+
+        jLabel14.setText("Mesa 2");
+
+        jLabel15.setText("Mesa 3");
+
+        jLabel16.setText("Mesa 4");
+
+        jLabel17.setText("Mesa 5");
+
+        jLabel18.setText("Mesa 6");
+
+        jLabel19.setText("Mesa 7");
+
+        jLabel20.setText("Mesa 8");
+
+        jLabel21.setText("Mesa 9");
+
+        jLabel22.setText("Mesa 10");
+
+        jLabel23.setText("Mesa 11");
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel24.setText("Mesas y Cupos Disponibles");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 669, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel17)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(mesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ButtonMesa5))
+                                .addGap(60, 60, 60)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ButtonMesa6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(mesa6, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(55, 55, 55)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ButtonMesa7)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel19)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(mesa7, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(78, 78, 78))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(ButtonMesa8)
+                                        .addGap(46, 46, 46)
+                                        .addComponent(ButtonMesa9))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel20)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(mesa8, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(45, 45, 45)
+                                        .addComponent(jLabel21)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(mesa9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(38, 38, 38)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel22)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(mesa10, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ButtonMesa10))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(ButtonMesa11)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel23)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(mesa11, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(34, 34, 34))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(11, 11, 11)
+                                        .addComponent(jLabel13)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(mesa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(ButtonMesa1))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(40, 40, 40)
+                                        .addComponent(ButtonMesa2))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel14)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(mesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(45, 45, 45)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ButtonMesa3)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel15)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(mesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ButtonMesa4)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel16)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(mesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 538, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel24)
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel13)
+                    .addComponent(mesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel16)
+                        .addComponent(jLabel15))
+                    .addComponent(mesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ButtonMesa4)
+                    .addComponent(ButtonMesa3)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ButtonMesa1)
+                        .addComponent(ButtonMesa2)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel17)
+                        .addComponent(jLabel19))
+                    .addComponent(mesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mesa6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18)
+                    .addComponent(mesa7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ButtonMesa6)
+                    .addComponent(ButtonMesa7)
+                    .addComponent(ButtonMesa5))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel20)
+                                .addComponent(jLabel22)
+                                .addComponent(jLabel23))
+                            .addComponent(mesa8, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mesa9, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel21)
+                            .addComponent(mesa10, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ButtonMesa8)
+                            .addComponent(ButtonMesa9)
+                            .addComponent(ButtonMesa10)
+                            .addComponent(ButtonMesa11)))
+                    .addComponent(mesa11, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        jTabbedPane1.addTab("Mesas", jPanel1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -309,6 +604,50 @@ public class VentanaPrin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ButtonMesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa1ActionPerformed
+       
+    }//GEN-LAST:event_ButtonMesa1ActionPerformed
+
+    private void ButtonMesa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa2ActionPerformed
+        
+    }//GEN-LAST:event_ButtonMesa2ActionPerformed
+
+    private void ButtonMesa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa3ActionPerformed
+        
+    }//GEN-LAST:event_ButtonMesa3ActionPerformed
+
+    private void ButtonMesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa4ActionPerformed
+        
+    }//GEN-LAST:event_ButtonMesa4ActionPerformed
+
+    private void ButtonMesa5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa5ActionPerformed
+        
+    }//GEN-LAST:event_ButtonMesa5ActionPerformed
+
+    private void ButtonMesa6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa6ActionPerformed
+       
+    }//GEN-LAST:event_ButtonMesa6ActionPerformed
+
+    private void ButtonMesa7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa7ActionPerformed
+       
+    }//GEN-LAST:event_ButtonMesa7ActionPerformed
+
+    private void ButtonMesa8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa8ActionPerformed
+        
+    }//GEN-LAST:event_ButtonMesa8ActionPerformed
+
+    private void ButtonMesa9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa9ActionPerformed
+        
+    }//GEN-LAST:event_ButtonMesa9ActionPerformed
+
+    private void ButtonMesa10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa10ActionPerformed
+        
+    }//GEN-LAST:event_ButtonMesa10ActionPerformed
+
+    private void ButtonMesa11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa11ActionPerformed
+        
+    }//GEN-LAST:event_ButtonMesa11ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -345,6 +684,17 @@ public class VentanaPrin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonMesa1;
+    private javax.swing.JButton ButtonMesa10;
+    private javax.swing.JButton ButtonMesa11;
+    private javax.swing.JButton ButtonMesa2;
+    private javax.swing.JButton ButtonMesa3;
+    private javax.swing.JButton ButtonMesa4;
+    private javax.swing.JButton ButtonMesa5;
+    private javax.swing.JButton ButtonMesa6;
+    private javax.swing.JButton ButtonMesa7;
+    private javax.swing.JButton ButtonMesa8;
+    private javax.swing.JButton ButtonMesa9;
     public static javax.swing.JLabel NombreRestaurante;
     public static javax.swing.JButton botonBebida;
     public static javax.swing.JButton botonCedula;
@@ -359,7 +709,19 @@ public class VentanaPrin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -372,6 +734,17 @@ public class VentanaPrin extends javax.swing.JFrame {
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel mesa1;
+    private javax.swing.JLabel mesa10;
+    private javax.swing.JLabel mesa11;
+    private javax.swing.JLabel mesa2;
+    private javax.swing.JLabel mesa3;
+    private javax.swing.JLabel mesa4;
+    private javax.swing.JLabel mesa5;
+    private javax.swing.JLabel mesa6;
+    private javax.swing.JLabel mesa7;
+    private javax.swing.JLabel mesa8;
+    private javax.swing.JLabel mesa9;
     public static javax.swing.JTextField nombrePlato;
     public static javax.swing.JLabel pago;
     private javax.swing.JTable table;
