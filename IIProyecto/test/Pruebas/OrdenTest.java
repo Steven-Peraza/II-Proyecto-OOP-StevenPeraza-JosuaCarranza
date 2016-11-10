@@ -39,7 +39,7 @@ public class OrdenTest {
     @Before
     public void setUp() {
         
-        orden=new Orden(5);
+        orden=new Orden();
     }
     
     @After
@@ -48,41 +48,14 @@ public class OrdenTest {
         orden=null;
     }
 
-    // se prueba que se asigne correctamente el numero de mesa
-    @Test
-    public void testSetNumeroMesa(){
-    int resultadoEsperado=8;
-    this.orden.setNumeroMesa(resultadoEsperado);
-    assertEquals("No fue posible la asignacion",resultadoEsperado,this.orden.getNumeroMesa());
-        
-    }
-    
-    // se prueba que se asigne correctamente la cantidad de bebidas
-     @Test
-    public void testSetCantidadebidas(){
-    
-    int resultadoEsperado=14;
-    this.orden.setCantidadBebidas(resultadoEsperado);
-    assertEquals("No fue posible la asignacion",resultadoEsperado,this.orden.getCantidadBebidas());
-        
-    }
-    
-    // se prueba que se asigne correctamente la cantidad de platos 
-    @Test
-    public void testSetCantidadPlatos(){
-    int resultadoEsperado=10;
-    this.orden.setCantidadPlatos(resultadoEsperado);
-    assertEquals("No fue posible la asignacion",resultadoEsperado,this.orden.getCantidadPlatos());
-        
-    }
-    
     //se prueba que se asigne el estado correctamente
     @Test
     public void testSetEstado(){
     
     boolean resultadoEsperado=true;
     this.orden.setEstado(resultadoEsperado);
-    assertEquals("No fue posible la asignacion",resultadoEsperado,this.orden.getEstado());
+    boolean obtenido=this.orden.getEstado();
+    assertEquals("No fue posible la asignacion",resultadoEsperado,obtenido);
         
     }
     
@@ -92,8 +65,9 @@ public class OrdenTest {
     
     Plato plato=new Plato("Arroz",4);
     int resultadoEsperado=1;
-    this.orden.agregarPlato(plato);
-    assertEquals("No fue posible agregar el plato",resultadoEsperado,this.orden.getPlatos().size());
+    this.orden.agregarPlato(plato,1);
+    int obtenido=this.orden.getDetalles().size();
+    assertEquals("No fue posible agregar el plato",resultadoEsperado,obtenido);
         
     }
     
@@ -101,24 +75,14 @@ public class OrdenTest {
     @Test
     public void testAgregarBebida(){
     
-    Bebida bebida=new Bebida("Gaseosa",3000,25,0);
+    Bebida bebida=new Bebida("Gaeosa",445);
     int resultadoEsperado=1;
-    this.orden.agregarBebida(bebida);
-    assertEquals("No fue posible agregar la bebida",resultadoEsperado,this.orden.getBebidas().size());
+    this.orden.agregarBebida(bebida,1);
+    int obtenido=this.orden.getDetalles().size();
+    assertEquals("No fue posible agregar la bebida",resultadoEsperado,obtenido);
         
     }
     
-    //se prueba que se asigne correctamente el pago
-    @Test
-    public void testSetPago(){
-    
-    Pago pago= new Pago();
-    float resultadoEsperado= 100;
-    pago.setMontoTotal(resultadoEsperado);
-    this.orden.setPago(pago); 
-    assertEquals("Error al asignar el monto total",resultadoEsperado,this.orden.getPago().getMontoTotal(),3);//necesita un parametro mas
-    
-    }
     
     
 }

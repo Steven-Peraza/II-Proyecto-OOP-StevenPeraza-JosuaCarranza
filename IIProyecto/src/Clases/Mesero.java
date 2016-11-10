@@ -37,6 +37,7 @@ public class Mesero extends Empleado{
         this.cantidadMesasAtendidas = cantidadMesasAtendidas;
     }
 
+    //funcion para tomar orden de una mesa
     public Orden tomarOrden(int numMesa){
     
     
@@ -45,7 +46,7 @@ public class Mesero extends Empleado{
 
     @Override
     public String toString() {
-        return "Mesero{" + "idiomas=" + idiomas + ", cantidadMesasAtendidas=" + cantidadMesasAtendidas + '}';
+        return super.toString()+ "Mesero{" + "idiomas=" + idiomas + ", cantidadMesasAtendidas=" + cantidadMesasAtendidas + '}';
     }
     
     

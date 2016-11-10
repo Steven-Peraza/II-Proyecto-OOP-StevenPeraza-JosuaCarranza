@@ -7,6 +7,8 @@ package iiproyecto;
 
 import Clases.Cliente;
 import Clases.Factoria;
+import Clases.Restaurante;
+import Ventanas.FacturaVista;
 
 /**
  *
@@ -17,9 +19,20 @@ public class main {
     /**
      * @param args the command line arguments
      */
+     public static Restaurante restaurante;
+    
     public static void main(String[] args) {
         // TODO code application logic here
-      
+        Cliente uno=new Cliente("Andrey","232");
+        
+        restaurante =new Restaurante(" "," Mi restaurante","23233434","Cerca del colegio","Mirestaurante@gmail.com");
+        restaurante.registrarCliente(uno);
+        uno=new Cliente("Ian Fabricio","123");
+        restaurante.registrarCliente(uno);
+        new FacturaVista().setVisible(true);
+        
+        
+        
         
     }
     

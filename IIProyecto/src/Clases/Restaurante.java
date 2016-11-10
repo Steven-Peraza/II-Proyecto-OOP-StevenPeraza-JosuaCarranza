@@ -93,6 +93,10 @@ public class Restaurante {
         this.tiposDeBebidasDisponibles = tiposDeBebidasDisponibles;
     }
 
+    public ArrayList getCola() {
+        return cola;
+    }
+   
     public ArrayList<Cliente> getClientes() {
         return clientes;
     }
@@ -138,7 +142,8 @@ public class Restaurante {
     
     //otras funciones adicionales a los metodos get y set
     
-    //se pregunta si existe una mesa con la capacidad requerida
+    //se pregunta si existe una mesa con la capacidad requerida por los clientes
+    //true si existe , false no 
     public boolean existeMesa(int cantidadClientes){
         
         for (int i=0;i<this.mesas.size();i++){
@@ -154,15 +159,20 @@ public class Restaurante {
     }
     
     //conocer el estado de una mesa en especifico
+    //true si la mesa con el numero especificado esta ocupada, false si no
     public boolean preguntarEstadoMesa(int numeroMesa){
         
          for (int i=0;i<this.mesas.size();i++){
         
             //si es la mesa se devuelve su estado
             if (this.mesas.get(i).getNumero()==numeroMesa){
-                   
-                return this.mesas.get(i).getEstado(); //devuelve estado de mesa
-            }          
+                 if (this.mesas.get(i).getEstado()==true){
+                     return true;
+                     
+                 }
+                 break; //que retorne falso si no esta ocupada
+                 
+                 }          
     }
          
          return false;
@@ -199,17 +209,47 @@ public class Restaurante {
     }
     }    
     
+     //busca cliente a partir de la cedula
+    public Cliente buscarCliente(int cedula){
+        
+        for (int i=0;i<this.clientes.size();i++){
+            
+            if (this.clientes.get(i).getCedula().equals(String.valueOf(cedula))){
+                return this.clientes.get(i);
+            }
+        }
+  
+        return null;
+    }
     
-    //registra cliente, boolean para saber si se inserto con exito
+    
+     //registra cliente, boolean para saber si se inserto con exito
     public boolean registrarCliente(Cliente cliente){
     
-    return false;
+        for (int i=0;i<this.clientes.size();i++){
+        
+            if (this.clientes.get(i).getCedula().equals(cliente.getCedula())){
+             return false;
+            }
+        }
+        
+    this.clientes.add(cliente); // se agrega
+    return true;
     }
     
      //registra empleado, boolean para saber si se inserto con exito
     public boolean registrarEmpleado(Empleado empleado){
-    
-    return false;
+        
+         for (int i=0;i<this.empleados.size();i++){
+        
+            if (this.empleados.get(i).getCedula().equals(empleado.getCedula())){
+             return false;
+            }
+        }
+        
+    this.empleados.add(empleado); // se agrega
+    return true;
+ 
     }
     
     //con el numero de cedula se busca y se elimina el empleado
@@ -224,50 +264,51 @@ public class Restaurante {
     return false;
     }
     
-    //buscar mesero del mes
+    //buscar mesero del mes reporte devuelve un objeto tipo mesero
     public Mesero buscarMeseroDelMes(){
     
     return null;
     }
     
-    //buscar cocinero del mes
+    //buscar cocinero del mes, devuelve un objeto tipo cocinero
     public Cocinero buscarCocineroDelMes(){
     
     return null;
     }
    
-    //se busca los platos mas consumidos
+    //se busca los platos mas consumidos, y se devuelven en un string
     public String obtenerPlatosMasConsumidos(){
     
-    return null;
+    return "";
     }
     
-    //se busca el cliente mas frecuente
+    //se busca el cliente mas frecuente, devuelve un objeto tipo cliente
     public Cliente obtenerClienteMasFrecuente(){
     
     
     return null;
     }
     
-    //buscar a que hora esta mas lleno el restaurante
+    //buscar a que hora esta mas lleno el restaurante, devuelve un string con la hora
     public String restauranteHoraMasLleno(){
     
     return null;
     }
     
     //devuelve cantidad de veces que se sirvieron los platos en un mes
+    //devuelve un arreglo 
     public String[] totalPorPlatoServidoEnUnMes(int numeroMes){
         
         return null;
     }
  
-     //devuelve cantidad de veces que se sirvieron las bebidas en un dia
+     //devuelve cantidad de veces que se sirvieron las bebidas en un dia en un arreglo
     public String[] totalPorTipoBebidasServidasEnUnDia(){
         
         return null;
     }
     
-    //devuelve total que se vendio por mes
+    //devuelve total que se vendio por mes en un arreglo
     public float[] totalVendidoPorMes(){
     
     return null;
@@ -310,6 +351,12 @@ public class Restaurante {
     cola.remove(0);
         
     }
+
+    @Override
+    public String toString() {
+        return "Restaurante{" + "logo=" + logo + ", nombre=" + nombre + ", telefono=" + telefono + ", direccion=" + direccion + ", correo=" + correo + ", tiposDeBebidasDisponibles=" + tiposDeBebidasDisponibles + ", clientes=" + clientes.size() + ", empleados=" + empleados.size() + ", mesas=" + mesas.size() + ", facturas=" + facturas.size() + ", menu=" + menu.getCantidadPlatillos() + ", cola=" + cola.size() + '}';
+    }
+    
     
     }
     

@@ -12,33 +12,23 @@ package Clases;
 public class Bebida {
     
      //atributos
-    private String nombre;
+ 
     private String tipo;
     private int precio;
     private float miliLitros;
+    
     private int vecesConsumido;
 
-    // recibe de parametro valores para todos los atributos de la clase
-    public Bebida(String tipo, int precio, float miliLitros, int vecesConsumido) {
+    //constructor
+    public Bebida(String tipo, int precio) {
         this.tipo = tipo;
         this.precio = precio;
-        this.miliLitros = miliLitros;
-        this.vecesConsumido = vecesConsumido;
-        
     }
 
-    //metodos set y get
+    
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
-    
-    
+    //metodos set y get    
+   
     // se obtiene el tipo de bebida
     public String getTipo() {
         return tipo;
@@ -74,7 +64,7 @@ public class Bebida {
 
     @Override
     public String toString() {
-        return "Bebida{" + "tipo=" + tipo + ", precio=" + precio + ", miliLitros=" + miliLitros + ", vecesConsumido=" + vecesConsumido + '}';
+        return "Bebida{"+" tipo=" + tipo + ", precio=" + precio + ", miliLitros=" + miliLitros + ", vecesConsumido=" + vecesConsumido + '}';
     }
 
     

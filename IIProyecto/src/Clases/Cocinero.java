@@ -63,6 +63,7 @@ public class Cocinero extends Empleado{
             if ((this.platosPorCocinar.get(i).getNombre().equals(plato.getNombre()))&&(this.platosPorCocinar.get(i).getNumero()==plato.getNumero())){
             
                 this.platosPorCocinar.get(i).setEstado("Listo"); //se coloca como preparado
+                this.platosPorCocinar.remove(i); // se elimina
                 break;
             }
         

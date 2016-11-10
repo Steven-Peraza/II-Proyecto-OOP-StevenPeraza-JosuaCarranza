@@ -9,7 +9,7 @@ package Clases;
  *
  * @author Josua
  */
-public class Persona {
+public abstract class Persona {
     
     // atributos de la clase
     private String nombre;
