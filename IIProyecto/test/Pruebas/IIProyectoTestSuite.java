@@ -17,8 +17,8 @@ import org.junit.runners.Suite;
  * @author Josua
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({Pruebas.OrdenTest.class, Pruebas.MenuTest.class, Pruebas.MesaTest.class})
-public class TestSuite {
+@Suite.SuiteClasses({Pruebas.OrdenTest.class, Pruebas.MenuTest.class, Pruebas.PlatoTest.class})
+public class IIProyectoTestSuite {
 
     @BeforeClass
     public static void setUpClass() throws Exception {

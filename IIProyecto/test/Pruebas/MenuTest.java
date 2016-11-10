@@ -59,8 +59,30 @@ public class MenuTest {
     }
     
      @Test
-     //prueba del metodo setCantidadDeBebidas, por medio dl get
+    //prueba del metodo getCantidadDaPlatillos
+    public void testGetCantidadPlatillos(){
+    
+    int resultadoEsperado=8;
+    this.menu.setCantidadPlatillos(8);
+    int obtenido= this.menu.getCantidadPlatillos();
+    assertEquals("Asignacion no exitosa",resultadoEsperado,obtenido);
+        
+    }
+    
+     @Test
+     //prueba del metodo setCantidadDeBebidas, por medio del get
     public void testSetCantidadBebidas(){
+    
+    int resultadoEsperado=10;
+    this.menu.setCantidadBebidas(10);
+    int obtenido= this.menu.getCantidadBebidas();
+    assertEquals("Asignacion no exitosa",resultadoEsperado,obtenido);
+        
+    }
+    
+      @Test
+     //prueba del metodo getCantidadDeBebidas
+    public void testGetCantidadBebidas(){
     
     int resultadoEsperado=10;
     this.menu.setCantidadBebidas(10);

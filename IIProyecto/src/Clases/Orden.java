@@ -93,6 +93,15 @@ public class Orden {
     
     //para verificar cuando ya todo lo consummido se ha pagado
     public boolean revisarDetalles(){
+        
+        for (int i = 0; i <this.detalles.size(); i++) {
+            
+            if (detalles.get(i).getCantidad()!=0){ //se verifica que todavia queden por pagar platos 
+            
+                return false;   //porque todavia quedan pllatos por pagar
+            }
+            
+        }
      
         return true;
     }
