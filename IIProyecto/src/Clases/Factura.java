@@ -16,7 +16,8 @@ public class Factura {
     //atributos
     private Date fechaYHora;
     private String formaPago;
-    public Cliente cliente;
+    private Cliente cliente;
+    
 
     //constructor
     public Factura(Date fechaYHora, String formaPago) {

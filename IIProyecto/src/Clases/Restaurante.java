@@ -25,9 +25,11 @@ public class Restaurante {
     private ArrayList <Empleado> empleados; //el restaurante
     private ArrayList <Mesa> mesas; //mesas que contiene el restaurante
     private ArrayList <Factura> facturas; //se almacena copias de las facturas
+    private ArrayList<Orden> ordenes;
+   
     private Menu menu; //el menu del restaurante
     
-    private ArrayList cola; //para almacenar temporalmente las ordenes pendientes
+    private ArrayList<Pedido> colaPedidos; //para almacenar temporalmente las ordenes pendientes
     
 //constructor
     public Restaurante(String logo, String nombre, String telefono, String direccion, String correo) {
@@ -41,6 +43,9 @@ public class Restaurante {
         this.facturas=new ArrayList();
         this.mesas=new ArrayList();
         this.empleados=new ArrayList();
+        this.colaPedidos=new ArrayList();
+        this.ordenes=new ArrayList();
+        
     }
     
     //metodos get y set
@@ -94,7 +99,7 @@ public class Restaurante {
     }
 
     public ArrayList getCola() {
-        return cola;
+        return colaPedidos;
     }
    
     public ArrayList<Cliente> getClientes() {
@@ -113,6 +118,16 @@ public class Restaurante {
         this.empleados.add(empleados);
     }
 
+    public ArrayList<Orden> getOrdenes() {
+        return ordenes;
+    }
+
+    public ArrayList<Pedido> getColaPedidos() {
+        return colaPedidos;
+    }
+
+    
+    
     public ArrayList<Mesa> getMesas() {
         return mesas;
     }
@@ -339,22 +354,22 @@ public class Restaurante {
     }
     
     //existe una cola de ordenes que controla el acceso a ellas
-    public void añadirCola(Orden orden){
+    public void añadirCola(Pedido pedido){
     
-        cola.add(orden);
+        colaPedidos.add(pedido);
     }
     
     //se elimina la primera orden en la cola
     public void sacarDecola(){
     
         //se remueve lo que esta en la posicion 0; que es la primera orden
-    cola.remove(0);
+    colaPedidos.remove(0);
         
     }
 
     @Override
     public String toString() {
-        return "Restaurante{" + "logo=" + logo + ", nombre=" + nombre + ", telefono=" + telefono + ", direccion=" + direccion + ", correo=" + correo + ", tiposDeBebidasDisponibles=" + tiposDeBebidasDisponibles + ", clientes=" + clientes.size() + ", empleados=" + empleados.size() + ", mesas=" + mesas.size() + ", facturas=" + facturas.size() + ", menu=" + menu.getCantidadPlatillos() + ", cola=" + cola.size() + '}';
+        return "Restaurante{" + "logo=" + logo + ", nombre=" + nombre + ", telefono=" + telefono + ", direccion=" + direccion + ", correo=" + correo + ", tiposDeBebidasDisponibles=" + tiposDeBebidasDisponibles + ", clientes=" + clientes.size() + ", empleados=" + empleados.size() + ", mesas=" + mesas.size() + ", facturas=" + facturas.size() + ", menu=" + menu.getCantidadPlatillos() + ", cola=" + colaPedidos.size() + '}';
     }
     
     

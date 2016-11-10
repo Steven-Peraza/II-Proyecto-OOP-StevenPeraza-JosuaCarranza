@@ -14,8 +14,16 @@ import java.awt.event.ActionListener;
  */
 public class Controlador implements ActionListener{
 
-    Restaurante instanciaRestaurante; //instancia que hace de modelo en el mvc;
-    //Vista instanciaVista; //luego debe asociarse a una ventana 
+    Factura instanciaFactura; //instancia que hace de modelo en el mvc;
+    //FacturaVista Vista; // debe asociarse a una ventana 
+
+    
+    //debe tambien recibir la ventana a controlar,
+    public Controlador(Factura instanciaFactura) {
+        this.instanciaFactura = instanciaFactura;
+    }
+    
+    
     
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -24,7 +32,9 @@ public class Controlador implements ActionListener{
 
     @Override
     public String toString() {
-        return "Controlador{" + "nombreRestaurante=" + instanciaRestaurante.getNombre() + '}';
+        
+        return "Controlador{" + "nombreRestaurante=" + instanciaFactura.getFormaPago() + '}';
+    
     }
     
     

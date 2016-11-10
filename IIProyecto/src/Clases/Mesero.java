@@ -12,7 +12,7 @@ package Clases;
 public class Mesero extends Empleado{
     
     //atributos
-     private String idiomas;
+    private String idiomas;
     private int cantidadMesasAtendidas=0; //para conocer cuantas mesas ha atendido el mesero
     
     //constructor

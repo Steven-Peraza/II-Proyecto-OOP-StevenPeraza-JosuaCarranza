@@ -73,7 +73,7 @@ public class Orden {
         Detalle det=new Detalle(cantidad);
         det.setBebida(bebida);
         this.detalles.add(det);
-         this.detalles.add(det);
+        
     }
     
     //agrega un plato que ya se encuentra en el menu a la orden, recibe objeto tipo plato

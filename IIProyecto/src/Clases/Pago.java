@@ -13,12 +13,13 @@ public class Pago {
    
     //atributos
    private float montoTotal;
-   private Factura factura;
+
 
    //constructor
     public Pago() {
+        
     }
-
+    
     //metodos set y get
     public float getMontoTotal() {
         return montoTotal;
@@ -27,24 +28,10 @@ public class Pago {
     public void setMontoTotal(float montoTotal) {
         this.montoTotal = montoTotal;
     }
-
-    public Factura getFactura() {
-        return factura;
-    }
-
-    public void setFactura(Factura factura) {
-        this.factura = factura;
-    }
-    
+   
     //calcula el impuesto de una compra
     public void calcularImpuesto(){
       
-    
-    }
-   
-    //una vez realizado el pago se desocupa la mesa a la que este asociada la orden
-    public void desocuparMesa(){
-    
     
     }
     
@@ -60,8 +47,11 @@ public class Pago {
 
     @Override
     public String toString() {
-        return "Pago{" + "montoTotal=" + montoTotal + ", factura=" + factura + '}';
+        return "Pago{" + "montoTotal=" + montoTotal + '}';
     }
+
+  
+    
     
     
 }
