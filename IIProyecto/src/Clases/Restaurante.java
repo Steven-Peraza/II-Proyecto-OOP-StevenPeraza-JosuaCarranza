@@ -27,7 +27,7 @@ public class Restaurante {
     private ArrayList <Factura> facturas; //se almacena copias de las facturas
     private Menu menu; //el menu del restaurante
     
-    private ArrayList cola; //para almacenar temporalmente las ordenes pendientes
+    private ArrayList <Pedido> cola; //para almacenar temporalmente las ordenes pendientes
     
 //constructor
     public Restaurante(String logo, String nombre, String telefono, String direccion, String correo) {
@@ -339,9 +339,9 @@ public class Restaurante {
     }
     
     //existe una cola de ordenes que controla el acceso a ellas
-    public void añadirCola(Orden orden){
+    public void añadirCola(Pedido pedido){
     
-        cola.add(orden);
+        cola.add(pedido);
     }
     
     //se elimina la primera orden en la cola
