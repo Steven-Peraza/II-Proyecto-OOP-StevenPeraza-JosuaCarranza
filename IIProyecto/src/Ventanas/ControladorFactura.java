@@ -17,14 +17,14 @@ import javax.swing.JOptionPane;
 public class ControladorFactura implements ActionListener{
     
     Restaurante instanciaRestaurante;
-    FacturaVista factura;
+    VentanaPrin factura;
     
     double montoTotal;
     double impuesto=3; //impuesto de venta y servicio
     double  vuelto;  //variables para gestionar el pago del usuario
     double pagoUsuario; 
 
-    public ControladorFactura(Restaurante instanciaRestaurante, FacturaVista factura) {
+    public ControladorFactura(Restaurante instanciaRestaurante, VentanaPrin factura) {
         this.instanciaRestaurante = instanciaRestaurante;
         this.factura = factura;
         agregarTextos();
@@ -35,13 +35,13 @@ public class ControladorFactura implements ActionListener{
     public void actionPerformed(ActionEvent evento) {
 
         //si se ingreso una cedula
-        if (evento.getActionCommand().equals(FacturaVista.botonCedula.getActionCommand())){
+        if (evento.getActionCommand().equals(VentanaPrin.botonCedula.getActionCommand())){
             
-            if (!FacturaVista.cedula.getText().equals("")){
+            if (!VentanaPrin.cedula.getText().equals("")){
                 
                 try{ //intertar conversion a entero
-                    int cedula=Integer.parseInt(FacturaVista.cedula.getText());
-                    FacturaVista.cliente.setText(instanciaRestaurante.buscarCliente(cedula).getNombre());
+                    int cedula=Integer.parseInt(VentanaPrin.cedula.getText());
+                    VentanaPrin.cliente.setText(instanciaRestaurante.buscarCliente(cedula).getNombre());
                 }
                 
                 catch(NumberFormatException e){
@@ -51,7 +51,7 @@ public class ControladorFactura implements ActionListener{
                 
                 //limpiar el campo de texto
                 finally{
-                    FacturaVista.cedula.setText("");
+                    VentanaPrin.cedula.setText("");
                 }
             }
             
@@ -63,27 +63,27 @@ public class ControladorFactura implements ActionListener{
             
         }
         
-        else if (evento.getActionCommand().equals(FacturaVista.combo.getActionCommand())){ //si se selecciono el pago
+        else if (evento.getActionCommand().equals(VentanaPrin.combo.getActionCommand())){ //si se selecciono el pago
             
-            if (FacturaVista.combo.getSelectedIndex()==0){ //se asigna al label segun la seleccion
+            if (VentanaPrin.combo.getSelectedIndex()==0){ //se asigna al label segun la seleccion
             
-                FacturaVista.pago.setText(" Pago Individual");
+                VentanaPrin.pago.setText(" Pago Individual");
                 
             }
             
             else{
-                FacturaVista.pago.setText(" Pago Grupal");
+                VentanaPrin.pago.setText(" Pago Grupal");
             }
             
         }
         
         //si hay que agregar un articulo
-        else if (evento.getActionCommand().equals(FacturaVista.botonPlato.getActionCommand())){
+        else if (evento.getActionCommand().equals(VentanaPrin.botonPlato.getActionCommand())){
         
-            if ((!FacturaVista.nombrePlato.getText().equals(""))&&((!FacturaVista.cantidad.getText().equals("")))){
+            if ((!VentanaPrin.nombrePlato.getText().equals(""))&&((!VentanaPrin.cantidad.getText().equals("")))){
                 
                 Object datos[]={"llego","llego","llego","llego","llego"};
-                FacturaVista.tabla.addRow(datos);
+                VentanaPrin.tabla.addRow(datos);
                 
                 //limpiar
                 limpiar();
@@ -96,12 +96,12 @@ public class ControladorFactura implements ActionListener{
             }
         }
         
-        else if(evento.getActionCommand().equals(FacturaVista.botonBebida.getActionCommand())){
+        else if(evento.getActionCommand().equals(VentanaPrin.botonBebida.getActionCommand())){
             
-             if ((!FacturaVista.tipoBebida.getText().equals(""))&&((!FacturaVista.cantidad2.getText().equals("")))){
+             if ((!VentanaPrin.tipoBebida.getText().equals(""))&&((!VentanaPrin.cantidad2.getText().equals("")))){
                 
                 Object datos[]={"llego","llego","llego","llego","llego"};
-                FacturaVista.tabla.addRow(datos);
+                VentanaPrin.tabla.addRow(datos);
                 
                 //limpiar
                 limpiar();
@@ -117,18 +117,18 @@ public class ControladorFactura implements ActionListener{
     
     //limpia los textfield de donde se recibe la informacion
     public void limpiar(){
-    FacturaVista.cantidad.setText("");
-    FacturaVista.cantidad2.setText("");
-    FacturaVista.nombrePlato.setText("");
-    FacturaVista.tipoBebida.setText("");
+        VentanaPrin.cantidad.setText("");
+        VentanaPrin.cantidad2.setText("");
+        VentanaPrin.nombrePlato.setText("");
+        VentanaPrin.tipoBebida.setText("");
     
     }
     
     public void agregarTextos(){
     
-        FacturaVista.NombreRestaurante.setText(instanciaRestaurante.getNombre());
-        FacturaVista.direccion.setText(instanciaRestaurante.getDireccion());
-        FacturaVista.telefono.setText(instanciaRestaurante.getTelefono());
+        VentanaPrin.NombreRestaurante.setText(instanciaRestaurante.getNombre());
+        VentanaPrin.direccion.setText(instanciaRestaurante.getDireccion());
+        VentanaPrin.telefono.setText(instanciaRestaurante.getTelefono());
     
     }
     

@@ -238,6 +238,34 @@ public class Restaurante {
         return null;
     }
     
+    //buscar un mesero a partir de la cedula
+    public Mesero buscarMesero(int cedula){
+        
+         for (int i=0;i<this.empleados.size();i++){
+            
+            if (this.empleados.get(i).getCedula().equals(String.valueOf(cedula))&&(this.empleados.get(i) instanceof Mesero)){
+                return (Mesero) this.empleados.get(i);
+            }
+        }
+  
+        return null;
+    
+    }
+    
+    //buscar un cocinero a partir de la cedula
+    public Cocinero buscarCocinero(int cedula){
+        
+         for (int i=0;i<this.empleados.size();i++){
+            
+            if (this.empleados.get(i).getCedula().equals(String.valueOf(cedula))&&(this.empleados.get(i) instanceof Cocinero)){
+                return  (Cocinero) this.empleados.get(i);
+            }
+        }
+  
+        return null;
+    
+    }
+    
     
      //registra cliente, boolean para saber si se inserto con exito
     public boolean registrarCliente(Cliente cliente){

@@ -7,8 +7,10 @@ package iiproyecto;
 
 import Clases.Cliente;
 import Clases.Factoria;
+import Clases.Mesero;
 import Clases.Restaurante;
-import Ventanas.FacturaVista;
+import Clases.*;
+import Ventanas.*;
 
 /**
  *
@@ -29,7 +31,12 @@ public class main {
         restaurante.registrarCliente(uno);
         uno=new Cliente("Ian Fabricio","123");
         restaurante.registrarCliente(uno);
-        new FacturaVista().setVisible(true);
+         Mesero mesero=new Mesero("Juan","423");   
+        restaurante.registrarEmpleado(mesero);
+        mesero=new Mesero("Carlos","323");
+        restaurante.registrarEmpleado(mesero);
+        
+        new VentanaPrin().setVisible(true);
         
         
         
