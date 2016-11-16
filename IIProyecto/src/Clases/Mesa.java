@@ -24,7 +24,7 @@ public class Mesa {
     public Mesa(int numero, int capacidad) {
         this.numero = numero;
         this.capacidad = capacidad;
-   
+        this.estado = false;
     }
 
     //metodos get y set

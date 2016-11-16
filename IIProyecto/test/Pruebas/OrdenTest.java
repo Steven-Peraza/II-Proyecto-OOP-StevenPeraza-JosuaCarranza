@@ -143,7 +143,7 @@ public class OrdenTest {
     @Test
     public void testAgregarBebida(){
     
-    Bebida bebida=new Bebida("Gaseosa",445);
+    Bebida bebida=new Bebida("Gaseosa",445,"fanta",2);
     int resultadoEsperado=1;
     this.orden.agregarBebida(bebida,1);
     int obtenido=this.orden.getDetalles().size();

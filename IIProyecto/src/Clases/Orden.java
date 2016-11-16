@@ -22,6 +22,7 @@ public class Orden {
     //constructor
     public Orden() {
       this.detalles=new ArrayList();
+      this.estado=true;
     }
 
     //metodos get y set de cada atributo

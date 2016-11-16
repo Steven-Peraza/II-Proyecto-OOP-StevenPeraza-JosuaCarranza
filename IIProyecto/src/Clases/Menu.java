@@ -82,7 +82,7 @@ public class Menu {
         
          for (int i=0;i<this.bebidas.size();i++){
         
-            if ((this.bebidas.get(i).getPrecio()==bebida.getPrecio())&&(this.bebidas.get(i).getTipo().equals(bebida.getTipo()))){ //si el tipo de bebida ya existe
+            if (this.bebidas.get(i).getNombre().equals(bebida.getNombre())){ //si el tipo de bebida ya existe
                
                 return false; //ya hay bebidas de ese tipo
                 
@@ -118,7 +118,7 @@ public class Menu {
          
           for (int i=0;i<this.bebidas.size();i++){
         
-            if ((this.bebidas.get(i).getPrecio()==bebida.getPrecio())&&(this.bebidas.get(i).getTipo().equals(bebida.getTipo()))){ //si el platillo ya existe
+            if (this.bebidas.get(i).getNombre().equals(bebida.getNombre())){ //si el platillo ya existe
                this.bebidas.remove(i);
                 return true; //eliminar exitosa
                 
@@ -133,11 +133,11 @@ public class Menu {
      
      //busca un platillo a partir del nombre,
      // y lo devuelve
-     public Plato buscarPlatillo(String nombre){
+     public Plato buscarPlatillo(int numero){
          
            for (int i=0;i<this.platos.size();i++){
         
-            if (this.platos.get(i).getNombre().equals(nombre)){ //si el platillo ya existe
+            if (this.platos.get(i).getNumero()==numero){ //si el platillo ya existe
                 return this.platos.get(i); // se retorna el plato
                 
             }
@@ -149,11 +149,11 @@ public class Menu {
      }
      
      //busca una bebida, recibe el tipo de bebida y su precio como parametro
-     public Bebida buscarBebida(String tipo,int precio){
+     public Bebida buscarBebida(int numero){
          
                   for (int i=0;i<this.bebidas.size();i++){
         
-            if ((this.bebidas.get(i).getPrecio()==precio)&&(this.bebidas.get(i).getTipo().equals(tipo))){//si la bebida ya existe
+            if (this.bebidas.get(i).getNumero()==numero){//si la bebida existe
                 return this.bebidas.get(i); // se retorna el plato
                 
             }
