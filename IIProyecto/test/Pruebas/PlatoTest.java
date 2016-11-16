@@ -240,4 +240,14 @@ public class PlatoTest {
         assertEquals("Error al obtener el estado",esperado,obtenido);
     }
     
+    @Test
+    //probando el metodo clone del plato que se haga un nuevo objeto con diferentes datos
+    public void testClone(){
+    
+    Plato pl=new Plato ("ARROZ",2);
+    Plato copia=plato.clone(); //clonando objeto
+    assertNotSame(" Fallo al copiar objeto",pl,copia); //si son diferentes objetos exito
+    
+    }
+    
 }

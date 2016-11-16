@@ -120,7 +120,7 @@ public class MenuTest {
      //probar metodo de insercion de una bebida que debe ser exitosa
      public void testAgregarBebidaCorrectamente(){
     
-        Bebida nuevo =new Bebida("Gaseosa",23); //nombre, numero de plato
+        Bebida nuevo =new Bebida("Gaseosa",23,"coca",1); //nombre, numero de plato
         boolean exito =this.menu.agregarBebida(nuevo); //agregar
         boolean esperado=true; //  si se inserto
         assertEquals("El menu ya contiene esta bebida",esperado,exito);
@@ -132,9 +132,9 @@ public class MenuTest {
     //porque ya existe el tipo de bebida en el menu
     public void testAgregarBebidaIncorrectamente(){
         
-        Bebida nuevo =new Bebida("Gaseosa",23); //nombre, precio de bebida
+        Bebida nuevo =new Bebida("Gaseosa",23,"fanta",2); //nombre, precio de bebida
         this.menu.agregarBebida(nuevo); //agrega sin problemas
-        nuevo=new Bebida("Gaseosa",23);  //no debe agregarlo
+        nuevo=new Bebida("Gaseosa",23,"fanta",3);  //no debe agregarlo
         boolean exito =this.menu.agregarBebida(nuevo); //debe retornar false la bebida ya existe
         boolean esperado=false; //  no se inserto
         assertEquals("El menu ya contiene esta bebida",esperado,exito);
@@ -165,7 +165,7 @@ public class MenuTest {
      @Test
     //se va a eliminar una bebida que existe
     public void testEliminarBebidaCorrectamente(){
-     Bebida nuevo =new Bebida("Gaseosa",200); //tipo, precio
+     Bebida nuevo =new Bebida("Gaseosa",200,"fanta",2); //tipo, precio
      this.menu.agregarBebida(nuevo); //agregar
      boolean esperado= true;
      boolean obtenido=this.menu.eliminarBebida(nuevo);
@@ -176,7 +176,7 @@ public class MenuTest {
     @Test
      //se va a eliminar una bebida que no existe
     public void testEliminarBebidaIncorrectamente(){
-     Bebida nuevo =new Bebida("Arroz",2); //tipo precio
+     Bebida nuevo =new Bebida("gaseosa",2,"fanta",1); //tipo precio
      boolean esperado= false; //se espera que no la encuentre, no la elimine
      boolean obtenido=this.menu.eliminarBebida(nuevo);
      assertEquals("No se encontró la bebida",esperado,obtenido);
@@ -188,7 +188,7 @@ public class MenuTest {
     public void testBuscarPlatilloExistente(){
      Plato nuevo =new Plato("Arroz",2); //nombre, numero de plato
      this.menu.agregarPlatillo(nuevo); //agregar
-     Plato platoEncontrado=this.menu.buscarPlatillo(nuevo.getNombre());
+     Plato platoEncontrado=this.menu.buscarPlatillo(nuevo.getNumero());
      //si los nombres coinciden lo encontró
      assertEquals("No fue posible encontrar el plato",nuevo.getNombre(),platoEncontrado.getNombre());
      
@@ -199,7 +199,7 @@ public class MenuTest {
     //probando que no se encuentre el plato
     public void testBuscarPlatilloNoExistente(){
      Plato nuevo =new Plato("Arroz",2); //nombre, numero de plato
-     Plato platoEncontrado=this.menu.buscarPlatillo(nuevo.getNombre());
+     Plato platoEncontrado=this.menu.buscarPlatillo(nuevo.getNumero());
      Plato esperado=null;
      //es nulo si el plato no se encontró
      assertEquals("El plato si existe",esperado,platoEncontrado);
@@ -210,18 +210,18 @@ public class MenuTest {
      @Test
     //probando que se encuentre la bebida
     public void testBuscarBebidaExistente(){
-     Bebida nuevo =new Bebida("Gaseosa",200); //tipo, precio
+     Bebida nuevo =new Bebida("Gaseosa",200,"fanta",3); //tipo, precio
      this.menu.agregarBebida(nuevo); //agregar
-     Bebida bebidaEncontrado=this.menu.buscarBebida(nuevo.getTipo(),nuevo.getPrecio());
+     Bebida bebidaEncontrado=this.menu.buscarBebida(nuevo.getNumero());
      //si el tipo coincide, entonces ese tipo de bebida si existe en el menu
-     assertEquals("La bebida no se encuentra en el menu",nuevo.getTipo(),bebidaEncontrado.getTipo());
+     assertEquals("La bebida no se encuentra en el menu",nuevo.getNombre(),bebidaEncontrado.getNombre());
     }
     
     @Test
     //probando que una bebida inexistente no se encuentre
     public void testBuscarBebidaNoExistente(){
-     Bebida nuevo =new Bebida("Gaseosa",200); //tipo, precio
-     Bebida bebidaEncontrado=this.menu.buscarBebida(nuevo.getTipo(),nuevo.getPrecio());
+     Bebida nuevo =new Bebida("Gaseosa",200,"fanta",3); //tipo, precio
+     Bebida bebidaEncontrado=this.menu.buscarBebida(nuevo.getNumero());
      Bebida esperado=null;
      //si es null bebidaEncontrado, entonces ese tipo de bebida no existe en el menu
      assertEquals("La bebida si existe ",esperado,bebidaEncontrado);

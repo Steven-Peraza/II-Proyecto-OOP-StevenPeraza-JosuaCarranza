@@ -12,13 +12,13 @@ package Clases;
 public class Pedido {
     
     //atributos 
-    private String  estado; //estado del pedido listo o no
+    private boolean  estado; //estado del pedido listo o no
     private Plato plato;
     private Bebida bebida;
 
     //constructor
 
-    public Pedido(String estado) {
+    public Pedido(boolean estado) {
         this.estado = estado;
         plato=null;
         bebida=null;
@@ -26,11 +26,11 @@ public class Pedido {
   
    // metodos set y get 
 
-    public String getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 

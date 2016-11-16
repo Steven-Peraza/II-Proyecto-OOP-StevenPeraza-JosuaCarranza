@@ -56,16 +56,75 @@ public class Cocinero extends Empleado{
         this.cantidadBebidasPreparadas = cantidadBebidasPreparadas;
     }
 
+    public ArrayList<Pedido> getListaPedidos() {
+        return listaPedidos;
+    }
+
+    public void setListaPedidos(Pedido Pedidos) {
+        
+        if (this.listaPedidos.size()==0){
+        this.listaPedidos.add(Pedidos);
+        }
+        
+        else{
+            if (this.listaPedidos.get(0).getPlato()!=null){
+                if (listaPedidos.get(0).getPlato().getNombre().equals(Pedidos.getPlato().getNombre())){
+                this.listaPedidos.add(Pedidos);
+                
+                }
+            }
+            
+            else{
+                if (listaPedidos.get(0).getBebida().getNombre().equals(Pedidos.getBebida().getNombre())){
+                this.listaPedidos.add(Pedidos);
+                
+                }
+            }
+        }
+    }
+    
+    
+
     //pone el estado del platillo en listo, y lo elimina de la lista del cocinero
     public void cocinarPlatillo(Pedido pedido){
         
+        try{
+        pedido.getBebida().setEstado("listo");       
+        }
         
+        catch(NullPointerException e){
+        pedido.getPlato().setEstado("listo");
+        
+        }
         
     }
     
     //funcion con la que el cocinero visualiza las ordenes
     public void verOrdenes(Orden orden){
     
+    }
+    
+    public String obtenerProductoPreparando(){
+       if (this.listaPedidos.size()==0){
+      
+           return "";
+          }
+       
+       else if (this.listaPedidos.get(0).getBebida()!=null){
+           
+           return this.listaPedidos.get(0).getBebida().getNombre();
+        }
+       
+       else{
+           
+            return this.listaPedidos.get(0).getPlato().getNombre();
+       }
+      
+    }
+    
+    public void limpiarPedidos(){
+    
+    this.listaPedidos.clear(); // se eliminan los platos que ya hizo
     }
     
     @Override

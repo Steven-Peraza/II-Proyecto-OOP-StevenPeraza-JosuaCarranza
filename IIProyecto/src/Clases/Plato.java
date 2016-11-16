@@ -9,7 +9,7 @@ package Clases;
  *
  * @author Josua
  */
-public class Plato {
+public class Plato implements Cloneable{
     
      //atributos
     private String nombre;
@@ -24,6 +24,9 @@ public class Plato {
     public Plato(String nombre, int numero) {
         this.nombre = nombre;
         this.numero = numero;
+        this.estado="espera";
+        this.vecesConsumido=0;
+        
     }
 
     //metodos get y set
@@ -86,6 +89,17 @@ public class Plato {
         this.estado = estado;
     }
 
+    //clonando un objeto
+    public Plato clone(){
+    
+      Plato clon = new Plato(this.nombre,this.numero);
+      clon.setEstado("espera");
+      clon.setIngredientes(this.ingredientes);
+      clon.setCalorias(this.calorias);
+      clon.setPrecio(this.precio);
+      return clon;
+    }
+    
     @Override
     public String toString() {
         return "Plato{" + "nombre=" + nombre + ", numero=" + numero + ", precio=" + precio + ", calorias=" + calorias + ", vecesConsumido=" + vecesConsumido + ", ingredientes=" + ingredientes.length + ", estado=" + estado + '}';

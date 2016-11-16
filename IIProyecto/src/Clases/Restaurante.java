@@ -98,10 +98,6 @@ public class Restaurante {
     public void setTiposDeBebidasDisponibles(String tiposDeBebidasDisponibles) {
         this.tiposDeBebidasDisponibles = tiposDeBebidasDisponibles;
     }
-
-    public ArrayList getCola() {
-        return colaPedidos;
-    }
    
     public ArrayList<Cliente> getClientes() {
         return clientes;
@@ -182,14 +178,13 @@ public class Restaurante {
         
             //si es la mesa se devuelve su estado
             if (this.mesas.get(i).getNumero()==numeroMesa){
-                 if (this.mesas.get(i).getEstado()==true){
-                     return true;
+                 return this.mesas.get(i).getEstado(); //se retorna el estado
                      
                  }
-                 break; //que retorne falso si no esta ocupada
+             
                  
                  }          
-    }
+    
          
          return false;
     }
@@ -239,6 +234,35 @@ public class Restaurante {
     }
     
     
+    //buscar un mesero a partir de la cedula
+    public Mesero buscarMesero(int cedula){
+        
+         for (int i=0;i<this.empleados.size();i++){
+            
+            if (this.empleados.get(i).getCedula().equals(String.valueOf(cedula))&&(this.empleados.get(i) instanceof Mesero)){
+                return (Mesero) this.empleados.get(i);
+            }
+        }
+  
+        return null;
+    
+    }
+    
+    //buscar un cocinero a partir de la cedula
+    public Cocinero buscarCocinero(int cedula){
+        
+         for (int i=0;i<this.empleados.size();i++){
+            
+            if (this.empleados.get(i).getCedula().equals(String.valueOf(cedula))&&(this.empleados.get(i) instanceof Cocinero)){
+                return  (Cocinero) this.empleados.get(i);
+            }
+        }
+  
+        return null;
+    
+    }
+    
+    
      //registra cliente, boolean para saber si se inserto con exito
     public boolean registrarCliente(Cliente cliente){
     
@@ -270,13 +294,28 @@ public class Restaurante {
     
     //con el numero de cedula se busca y se elimina el empleado
     public boolean despedirEmpleado(int cedula){
-    
+         for (int i=0;i<this.empleados.size();i++){
+            
+            if (this.empleados.get(i).getCedula().equals(String.valueOf(cedula))){
+                this.empleados.remove(i);
+                return true;
+            }
+        }
+         
         return false;
     }
     
     // se busca con el numero de cedula el cliente y se elimina
     public boolean eliminarCliente(int cedula){
-    
+        
+          for (int i=0;i<this.empleados.size();i++){
+            
+            if (this.empleados.get(i).getCedula().equals(String.valueOf(cedula))){
+                this.empleados.remove(i);
+                return true;
+            }
+        }
+            
     return false;
     }
     
@@ -314,14 +353,73 @@ public class Restaurante {
     //devuelve cantidad de veces que se sirvieron los platos en un mes
     //devuelve un arreglo 
     public String[] totalPorPlatoServidoEnUnMes(int numeroMes){
+        ArrayList<Plato> plat=this.menu.getPlatos(); //acceso a la lista de platos
+        int tamano=(plat.size())*2; 
+        String total[]=new String[tamano];
+        for (int i=0;i<plat.size();i++){
+            int num=i+i;
+            total[num]=plat.get(i).getNombre(); // nombre del plato; buscar en facturas su consumo
+            int consumo=0;
+            for (int j = 0; j < this.facturas.size(); j++) {
+                String temp[]=this.facturas.get(j).getFechaYHora().split("/");
+                
+                if (Integer.parseInt(temp[1])==numeroMes){
+                ArrayList<Detalle> ord=this.facturas.get(j).getOrden().getDetalles(); //obtener la orden de la factura
+               
+                for (int x=0;x<ord.size();x++){
+                
+                    if (ord.get(x).getPlato()!=null){
+                        if (ord.get(x).getPlato().getNombre().equals(plat.get(i).getNombre())){ //comparacion de nombres
+                            consumo+=ord.get(x).getCantidad(); //suma la cantidad que se sirvió de ese plato
+                            
+                        }
+                    }
+                }
+                
+                }
+                
+            }
+            total[num+1]=String.valueOf(consumo);
+        }
         
-        return null;
+        return total;
     }
  
      //devuelve cantidad de veces que se sirvieron las bebidas en un dia en un arreglo
-    public String[] totalPorTipoBebidasServidasEnUnDia(){
+    public String[] totalPorTipoBebidasServidasEnUnDia(int dia,int mes){
         
-        return null;
+        ArrayList<Bebida> beb=this.menu.getBebidas(); //acceso a la lista de platos
+        String tot[]=this.tiposDeBebidasDisponibles.split(",");
+        String total[]=new String [(tot.length)*2];
+        for (int i=0;i<beb.size();i++){
+            int num=i+i;
+            total[num]=beb.get(i).getNombre(); // nombre del plato; buscar en facturas su consumo
+            int consumo=0;
+            for (int j = 0; j < this.facturas.size(); j++) {
+                String temp[]=this.facturas.get(j).getFechaYHora().split("/");
+                
+                if ((Integer.parseInt(temp[1])==mes)&&(Integer.parseInt(temp[0]==dia))){
+                ArrayList<Detalle> ord=this.facturas.get(j).getOrden().getDetalles(); //obtener la orden de la factura
+               
+                for (int x=0;x<ord.size();x++){
+                
+                    if (ord.get(x).getPlato()!=null){
+                        if (ord.get(x).getPlato().getNombre().equals(plat.get(i).getNombre())){ //comparacion de nombres
+                            consumo+=ord.get(x).getCantidad(); //suma la cantidad que se sirvió de ese plato
+                            
+                        }
+                    }
+                }
+                
+                }
+                
+            }
+            total[num+1]=String.valueOf(consumo);
+        }
+        
+        return total;
+        
+      
     }
     
     //devuelve total que se vendio por mes en un arreglo
@@ -356,7 +454,41 @@ public class Restaurante {
     
     //existe una cola de ordenes que controla el acceso a ellas
     public void añadirCola(Pedido pedido){
-    
+        for (int i = 0; i <this.colaPedidos.size(); i++) {
+            
+            if ((colaPedidos.get(i).getPlato()!=null)&&(pedido.getPlato()!=null)){ //si se trata de un plato que son los que pueden repetirse
+            
+                if (colaPedidos.get(i).getPlato().getNombre().equals(pedido.getPlato().getNombre())){
+                    int x=i;
+                    try{
+                    
+                        while((x<this.colaPedidos.size())&&(colaPedidos.get(x).getPlato().getNombre().equals(pedido.getPlato().getNombre()))){
+                        
+                            x++;
+                        }
+                        if (x<this.colaPedidos.size()){
+                            this.colaPedidos.add(x, pedido);//añadir ahi el pedido
+                            return;
+                        }
+                 
+                    }
+                    catch(NullPointerException e){
+                    if (x<this.colaPedidos.size()){
+                            this.colaPedidos.add(x, pedido);//añadir ahi el pedido
+                            return;
+                            }
+                        else{
+                        
+                        }
+                   
+                    }
+                    
+                    break;
+                }
+                
+            }
+            
+        }
         colaPedidos.add(pedido);
 
     }
@@ -371,16 +503,38 @@ public class Restaurante {
     
     //agregar una orden al arreglo temporal
     public void agregarOrden(Orden orden){
-    
+        
+        this.ordenes.add(orden);
     
     }
     
     //elimina una orden que ha quedado inactiva luego de un pago
     public void eliminarOrden(int num){
+        for (int i = 0; i <this.ordenes.size(); i++) {
+                            
+             if (this.ordenes.get(i).getMesa().getNumero()==num){ //si es la orden de la
+              
+                    this.ordenes.remove(i); //eliminar la orden
+              
+                    }
+     }
+    }    
+         
     
+    public Orden obtenerOrden(int numRelacion){
     
+       
+         for (int i = 0; i <this.ordenes.size(); i++) {
+                            
+             if (this.ordenes.get(i).getMesa().getNumero()==numRelacion){ //si es la orden de la
+              
+               return this.ordenes.get(i); //retornar la orden
+              
+                            }
+                        }
+         
+         return null;
     }
-    
 
     @Override
     public String toString() {
