@@ -63,8 +63,8 @@ public class Plato {
         return vecesConsumido;
     }
 
-    public void setVecesConsumido(int vecesConsumido) {
-        this.vecesConsumido = vecesConsumido;
+    public void setVecesConsumido(int veces) {
+        this.vecesConsumido += veces;
     }
 
     //retorna el arreglo que contiene los ingreddientes del plato

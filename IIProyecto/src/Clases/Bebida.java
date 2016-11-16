@@ -12,7 +12,7 @@ package Clases;
 public class Bebida {
     
      //atributos
- 
+    private String nombre;
     private String tipo;
     private int precio;
     private float miliLitros;
@@ -20,7 +20,8 @@ public class Bebida {
     private int vecesConsumido;
 
     //constructor
-    public Bebida(String tipo, int precio) {
+    public Bebida(String nombre, String tipo, int precio) {
+        this.nombre = nombre;
         this.tipo = tipo;
         this.precio = precio;
     }
@@ -60,6 +61,14 @@ public class Bebida {
 
     public void setVecesConsumido(int vecesConsumido) {
         this.vecesConsumido = vecesConsumido;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     @Override

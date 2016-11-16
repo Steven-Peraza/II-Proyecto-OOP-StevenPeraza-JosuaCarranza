@@ -7,6 +7,7 @@ package iiproyecto;
 
 import Clases.*;
 import Ventanas.*;
+import java.util.Date;
 
 /**
  *
@@ -27,6 +28,15 @@ public class main {
         restaurante.registrarCliente(uno);
         uno=new Cliente("Ian Fabricio","123");
         restaurante.registrarCliente(uno);
+        Date fec = new Date();
+        Factura ff = new Factura(fec,"Fiado");
+        Orden or = new Orden();
+        Detalle detalles = new Detalle(4);
+        Plato plato = new Plato("Pinto",1);
+        detalles.setPlato(plato);
+        or.setDetalles(detalles);
+        ff.setOrden(or);
+        restaurante.añadirFactura(ff);
         
         //agregacion de las mesas
         Mesa mesa = new Mesa (1,4);
