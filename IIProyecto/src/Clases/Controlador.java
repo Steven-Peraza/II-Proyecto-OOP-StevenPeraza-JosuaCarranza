@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Ventanas.VistaFactura;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JOptionPane;
@@ -106,11 +107,13 @@ public class Controlador implements ActionListener,Observer{
     
     public void colocarDatos(){
     VistaFactura.vuelto.setEditable(false);
-    String temp[]=this.instanciaFactura.getFechaYHora().split("/");
+    Date d=this.instanciaFactura.getFechaYHora();
+    String dia=String.valueOf(d.getDay());
+    
     VistaFactura.nombre.setText(VistaFactura.restaurant.getNombre());
     VistaFactura.direccion.setText(VistaFactura.restaurant.getDireccion());
-    VistaFactura.fec.setText(temp[0]+" / "+temp[1]+" / "+temp[2]);
-    VistaFactura.hora.setText(temp[3]+":"+temp[4]+":"+temp[5]);
+    VistaFactura.fec.setText(String.valueOf(d.getDay())+" / "+String.valueOf(d.getMonth())+" / "+String.valueOf(d.getYear()));
+    VistaFactura.hora.setText(String.valueOf(d.getHours())+":"+String.valueOf(d.getMinutes())+":"+String.valueOf(d.getSeconds()));
     VistaFactura.tel.setText(VistaFactura.restaurant.getTelefono());
    
     }

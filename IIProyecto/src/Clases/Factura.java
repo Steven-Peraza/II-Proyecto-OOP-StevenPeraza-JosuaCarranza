@@ -14,7 +14,7 @@ import java.util.Date;
 public class Factura {
     
     //atributos
-    private String fechaYHora;
+    private Date fechaYHora;
     private String formaPago;
 
     private Cliente cliente;
@@ -23,17 +23,17 @@ public class Factura {
 
 
     //constructor
-    public Factura(String fechaYHora, String formaPago) {
+    public Factura(Date fechaYHora, String formaPago) {
         this.fechaYHora = fechaYHora;
         this.formaPago = formaPago;
     }
     
     //metodos get y set
-    public String getFechaYHora() {
+    public Date getFechaYHora() {
         return fechaYHora;
     }
 
-    public void setFechaYHora(String fechaYHora) {
+    public void setFechaYHora(Date fechaYHora) {
         this.fechaYHora = fechaYHora;
     }
 

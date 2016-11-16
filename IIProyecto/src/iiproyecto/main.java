@@ -7,6 +7,7 @@ package iiproyecto;
 
 import Clases.*;
 import Ventanas.*;
+import java.util.Date;
 
 /**
  *
@@ -114,7 +115,8 @@ public class main {
         orden.agregarPlato(p,3);
         restaurante.setMenu(menu); //se agrega el menu al restaurante
         restaurante.setTiposDeBebidasDisponibles("Gaseosa,Refresco,Jugo,Licor");
-        Factura fac=new Factura("16/11/2016/9/26/57","Grupal");
+        Date nuevo=new Date();
+        Factura fac=new Factura(nuevo,"Grupal");
         fac.setOrden(orden);
         restaurante.añadirFactura(fac);
         orden= new Orden();
@@ -122,7 +124,7 @@ public class main {
         orden.agregarPlato(p,4);
         p=new Plato("Casado",3);
         orden.agregarPlato(p,3);
-        fac=new Factura("16/11/2016/9/26/57","Grupal");
+        fac=new Factura(nuevo,"Grupal");
         fac.setOrden(orden);
         restaurante.añadirFactura(fac);
         

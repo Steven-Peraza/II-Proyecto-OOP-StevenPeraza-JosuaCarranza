@@ -9,10 +9,11 @@ import Clases.Controlador;
 import Clases.Detalle;
 import Clases.Orden;
 import Clases.Restaurante;
-import static Ventanas.VentanaPrin.botonBebida;
+/*import static Ventanas.VentanaPrin.botonBebida;
 import static Ventanas.VentanaPrin.botonCedula;
 import static Ventanas.VentanaPrin.botonPlato;
 import static Ventanas.VentanaPrin.combo;
+*/
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -35,7 +36,7 @@ public class VistaFactura extends javax.swing.JFrame  {
     public static double total=0;
     public static Orden temp;
     public static Orden orden;
-    public static String  fecha;
+    public static Date fecha;
     public static ArrayList <Detalle> detalles;
     public static int tipoPa;
     public static int nume;
@@ -55,9 +56,9 @@ public class VistaFactura extends javax.swing.JFrame  {
         tabla = (DefaultTableModel) table.getModel(); //obtener el modelo de la tabla
         orden=restaurant.obtenerOrden(num); //se obtiene la orden a la que se asocia la factura
         detalles=orden.getDetalles();
-        
+        fecha=new Date();
         Calendar Cal= Calendar.getInstance(); 
-        fecha= Cal.get(Cal.DATE)+"/"+(Cal.get(Cal.MONTH)+1)+"/"+Cal.get(Cal.YEAR)+"/"+Cal.get(Cal.HOUR_OF_DAY)+"/"+Cal.get(Cal.MINUTE)+"/"+Cal.get(Cal.SECOND);
+       
         System.out.println(fecha);
         tabla=(DefaultTableModel)table.getModel();
         

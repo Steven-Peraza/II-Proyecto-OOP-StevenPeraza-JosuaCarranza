@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package Ventanas;
 
 import Clases.Mesa;
@@ -56,14 +57,7 @@ public class VentanaPrin extends javax.swing.JFrame {
         array[8]=ButtonMesa9;
         array[9]=ButtonMesa10;
         array[10]=ButtonMesa11;
-        
-        //colocando texto a las columnas
-        String textosCol[]={"Descripción","Cantidad","Precio Unitario","Impuesto","Total" };
-        String filas [][]={}; //necesario para un agregado de filas mas ordenado
-        tabla= new DefaultTableModel(filas,textosCol);  //inicializacion de la tabla con los arreglos de fila y columna
-        table.setModel(tabla); //se manda a la tabla visual el modelo 
-        
-      //  asignaEventos(new ControladorFactura(this.restaurant,this)); //ceder control al controlador
+    
         
         mesa1.setText("Cap: " + String.valueOf(restaurant.getMesas().get(0).getCapacidad()));                                       
         mesa2.setText("Cap: " + String.valueOf(restaurant.getMesas().get(1).getCapacidad()));                                   
@@ -158,35 +152,6 @@ public class VentanaPrin extends javax.swing.JFrame {
         asignar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         logo = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        pago = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        combo = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        botonPlato = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        botonBebida = new javax.swing.JButton();
-        direccion = new javax.swing.JLabel();
-        nombrePlato = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        tipoBebida = new javax.swing.JTextField();
-        telefono = new javax.swing.JLabel();
-        cantidad = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        cliente = new javax.swing.JLabel();
-        cantidad2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        cedula = new javax.swing.JTextField();
-        botonCedula = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        NombreRestaurante = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("VENTANA PRINCIPAL");
@@ -603,188 +568,6 @@ public class VentanaPrin extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Llegada de Cliente", jPanel2);
 
-        jLabel6.setText("Tipo de Pago");
-
-        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Individual", "Grupal" }));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        jLabel7.setText(" Productos Consumidos");
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel8.setText("Añadido de bebidas y platos");
-
-        botonPlato.setText("Ingresar Plato");
-
-        jLabel9.setText("Nombre del plato");
-
-        jLabel10.setText("Cantidad Consumida");
-
-        table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Descripción", "Cantidad", "Precio Unitario", "Impuesto", "Total"
-            }
-        ));
-        jScrollPane2.setViewportView(table);
-
-        jLabel11.setText("Tipo de la bebida");
-
-        jLabel12.setText("Cantidad Consumida");
-
-        jLabel1.setText("Dirección :");
-
-        botonBebida.setText("Ingresar Bebida");
-
-        jLabel2.setText("Telefono :");
-
-        jLabel3.setText("Cliente :");
-
-        jLabel4.setText("Numero de cédula del cliente");
-
-        botonCedula.setText("Ingresar Numero");
-
-        jLabel5.setText("Tipo de pago :");
-
-        NombreRestaurante.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 516, Short.MAX_VALUE)
-                .addComponent(NombreRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(60, 60, 60)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(pago, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                                .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(botonCedula)))
-                                        .addGap(53, 53, 53)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(nombrePlato, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(4, 4, 4)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(33, 33, 33)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tipoBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cantidad2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                                .addGap(12, 12, 12)
-                                                .addComponent(botonPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(173, 173, 173)
-                                                .addComponent(botonBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(89, 89, 89)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(229, Short.MAX_VALUE)))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(NombreRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 511, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel5)
-                        .addComponent(pago, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonCedula)
-                        .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addComponent(jLabel8)
-                    .addGap(26, 26, 26)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel10)
-                        .addComponent(jLabel9)
-                        .addComponent(jLabel11)
-                        .addComponent(jLabel12))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(nombrePlato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tipoBebida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cantidad2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(botonPlato)
-                        .addComponent(botonBebida))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
-        );
-
-        jTabbedPane1.addTab("Facturas", jPanel3);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -798,6 +581,224 @@ public class VentanaPrin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+
+        if ((asignacionMesa==true)&&(asignacionMesero==true)){
+
+            JOptionPane.showMessageDialog(this," Gracias por preferirnos, esperamos la pase bien" ," Bienvenida ", 1);
+            asignacionMesero=false;
+            asignacionMesa=false; //reestablecer estados
+        }
+
+        else{
+            JOptionPane.showMessageDialog(this,"Recuerde asignar un mesero a su mesa, y verifcar que existan mesas disponibles" ," Alerta de sistema ", 0);
+
+        }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void asignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarActionPerformed
+        // TODO add your handling code here:
+        if (!id.getText().equals("")){ //que no este vacia
+
+            try{ //intentar conversion a entero
+                int cedula=Integer.parseInt(id.getText());
+
+                if (restaurant.buscarMesero(cedula)!=null){
+                    //realizar accion
+                    Mesero mesero=restaurant.buscarMesero(cedula);
+                    JOptionPane.showMessageDialog(this,mesero.getNombre()+" fue asignado para la atención de la mesa " ," Notificacion ", 1);
+
+                    Orden orden=restaurant.obtenerOrden(tab); //obtener la orden del numero de mesa especificado
+                    orden.setMesero(mesero); //se asigna el mesero
+                    mesero.setCantidadMesasAtendidas(mesero.getCantidadMesasAtendidas()+1); //se aumenta las mesas atendidas por el mesero
+                    asignacionMesero=true;
+                }
+                else{
+                    JOptionPane.showMessageDialog(this," El numero ingresado no corresponde a ningún mesero " ," Notificacion ", 0);
+                }
+
+            }
+
+            catch(NumberFormatException e){
+
+                JOptionPane.showMessageDialog(this," El dato ingresado no es un número" ," Alerta de Sistema ", 0);
+            }
+
+            //limpiar el campo de texto
+            finally{
+                id.setText("");
+            }
+
+        }
+
+    }//GEN-LAST:event_asignarActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        // TODO add your handling code here:
+        if (!clientes.getText().equals("")){ //que no este vacia
+
+            try{ //intentar conversion a entero
+                int cantidad=Integer.parseInt(clientes.getText());
+
+                if (restaurant.existeMesa(cantidad)==true){
+
+                    JOptionPane.showMessageDialog(this," Si existe una mesa con los requerimentos " ," Notificacion ", 1); //1 ,simbolo de notificacion
+                    int tam=iiproyecto.main.restaurante.getMesas().size();
+                    //acceder al arreglo de mesas
+                    ArrayList <Mesa> table=iiproyecto.main.restaurante.getMesas();
+                    int numeroMesa=0;
+
+                    for (int i = 0; i < tam; i++) {
+
+                        if ((table.get(i).getEstado()!=true)&&(table.get(i).getCapacidad()==cantidad)){
+
+                            numeroMesa=table.get(i).getNumero();
+                            iiproyecto.main.restaurante.ocuparMesa(numeroMesa); //se ocupa la mesa
+                            cambiarImagenOcupada(numeroMesa-1);
+                            Orden orden=new Orden();     //se hace una nueva orden para el cliente;
+                            orden.setMesa(table.get(i)); //se relaciona con una mesa
+                            main.restaurante.agregarOrden(orden); //se agrega la orden
+                            tab=numeroMesa;
+                            asignacionMesa=true;
+                            break;
+                        }
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(this," No existe una mesa con los requerimentos " ," Notificacion ", 0);
+                }
+
+            }
+
+            catch(NumberFormatException e){
+
+                JOptionPane.showMessageDialog(this," El dato ingresado no es un número" ," Alerta de Sistema ", 0);
+            }
+
+            //limpiar el campo de texto
+            finally{
+                clientes.setText("");
+            }
+
+        }
+
+    }//GEN-LAST:event_buscarActionPerformed
+
+    private void pagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagActionPerformed
+        // TODO add your handling code here:
+
+        botonPagar=true;
+        Object [] botones = {" Individual", " Grupal"};
+        int otra = JOptionPane.showOptionDialog(null," Le pedimos seleccione el tipo de pago","Pregunta de Sistema", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,botones,botones[0]);
+        if (otra == 0){
+
+            tipoPago=1; //normal
+
+        }
+
+        else{
+            tipoPago=2; //grupal
+        }
+
+    }//GEN-LAST:event_pagActionPerformed
+
+    private void botonCocinerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCocinerosActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new VistaCocineros().setVisible(true);
+    }//GEN-LAST:event_botonCocinerosActionPerformed
+
+    private void pedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidosActionPerformed
+        // TODO add your handling code here:
+        //habilitar boton
+        if (restaurant.getColaPedidos().size()>0){
+
+            this.setVisible(false);
+            new Ventanas.VistaPedidos().setVisible(true); //se pasa como parametro la orden a la que se relaciona la mesa
+        }
+
+        else{
+            JOptionPane.showMessageDialog(this," No existen pedidos pendientes  " ," Notificación ", 1);
+        }
+
+    }//GEN-LAST:event_pedidosActionPerformed
+
+    private void ordenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenesActionPerformed
+        // TODO add your handling code here:
+        botonVerOrdenes=true; //habilitar accion
+    }//GEN-LAST:event_ordenesActionPerformed
+
+    private void ordenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenaActionPerformed
+        // TODO add your handling code here:
+        botonOrden=true;
+    }//GEN-LAST:event_ordenaActionPerformed
+
+    private void ButtonMesa11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa11ActionPerformed
+        int num=11; //el numero de mesa
+        manejoMesas(num);
+    }//GEN-LAST:event_ButtonMesa11ActionPerformed
+
+    private void ButtonMesa10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa10ActionPerformed
+        int num=10; //el numero de mesa
+        manejoMesas(num);
+
+    }//GEN-LAST:event_ButtonMesa10ActionPerformed
+
+    private void ButtonMesa9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa9ActionPerformed
+        int num=9; //el numero de mesa
+        manejoMesas(num);
+    }//GEN-LAST:event_ButtonMesa9ActionPerformed
+
+    private void ButtonMesa8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa8ActionPerformed
+        int num=8; //el numero de mesa
+        manejoMesas(num);
+
+    }//GEN-LAST:event_ButtonMesa8ActionPerformed
+
+    private void ButtonMesa5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa5ActionPerformed
+        int num=5; //el numero de mesa
+        manejoMesas(num);
+
+    }//GEN-LAST:event_ButtonMesa5ActionPerformed
+
+    private void ButtonMesa6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa6ActionPerformed
+        int num=6; //el numero de mesa
+        manejoMesas(num);
+
+    }//GEN-LAST:event_ButtonMesa6ActionPerformed
+
+    private void ButtonMesa7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa7ActionPerformed
+        int num=7; //el numero de mesa
+        manejoMesas(num);
+
+    }//GEN-LAST:event_ButtonMesa7ActionPerformed
+
+    private void ButtonMesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa4ActionPerformed
+        int num=4; //el numero de mesa
+        manejoMesas(num);
+
+    }//GEN-LAST:event_ButtonMesa4ActionPerformed
+
+    private void ButtonMesa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa3ActionPerformed
+        int num=3; //el numero de mesa
+        manejoMesas(num);
+
+    }//GEN-LAST:event_ButtonMesa3ActionPerformed
+
+    private void ButtonMesa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa2ActionPerformed
+        int num=2; //el numero de mesa
+        manejoMesas(num);
+
+    }//GEN-LAST:event_ButtonMesa2ActionPerformed
+
+    private void ButtonMesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa1ActionPerformed
+        int num=1; //el numero de mesa
+        manejoMesas(num);
+
+    }//GEN-LAST:event_ButtonMesa1ActionPerformed
 
     //recibe el numero de mesa a manejar
     public void manejoMesas(int num){
@@ -857,124 +858,6 @@ public class VentanaPrin extends javax.swing.JFrame {
     }
     
     
-    private void ButtonMesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa1ActionPerformed
-        int num=1; //el numero de mesa
-        manejoMesas(num);               
-        
-    }//GEN-LAST:event_ButtonMesa1ActionPerformed
-
-    private void ButtonMesa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa2ActionPerformed
-       int num=2; //el numero de mesa
-       manejoMesas(num); 
-        
-    }//GEN-LAST:event_ButtonMesa2ActionPerformed
-
-    private void ButtonMesa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa3ActionPerformed
-       int num=3; //el numero de mesa
-       manejoMesas(num);  
-        
-         
-    }//GEN-LAST:event_ButtonMesa3ActionPerformed
-
-    private void ButtonMesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa4ActionPerformed
-        int num=4; //el numero de mesa
-        manejoMesas(num); 
-        
-        
-    }//GEN-LAST:event_ButtonMesa4ActionPerformed
-
-    private void ButtonMesa5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa5ActionPerformed
-        int num=5; //el numero de mesa
-        manejoMesas(num); 
-       
-    }//GEN-LAST:event_ButtonMesa5ActionPerformed
-
-    private void ButtonMesa6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa6ActionPerformed
-       int num=6; //el numero de mesa
-       manejoMesas(num);  
-       
-    }//GEN-LAST:event_ButtonMesa6ActionPerformed
-
-    private void ButtonMesa7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa7ActionPerformed
-       int num=7; //el numero de mesa
-       manejoMesas(num);   
-       
-    }//GEN-LAST:event_ButtonMesa7ActionPerformed
-
-    private void ButtonMesa8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa8ActionPerformed
-       int num=8; //el numero de mesa
-       manejoMesas(num);  
-       
-    }//GEN-LAST:event_ButtonMesa8ActionPerformed
-
-    private void ButtonMesa9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa9ActionPerformed
-        int num=9; //el numero de mesa
-        manejoMesas(num); 
-    }//GEN-LAST:event_ButtonMesa9ActionPerformed
-
-    private void ButtonMesa10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa10ActionPerformed
-      int num=10; //el numero de mesa
-      manejoMesas(num); 
-          
-    }//GEN-LAST:event_ButtonMesa10ActionPerformed
-
-    private void ButtonMesa11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMesa11ActionPerformed
-        int num=11; //el numero de mesa
-        manejoMesas(num); 
-    }//GEN-LAST:event_ButtonMesa11ActionPerformed
-
-    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        // TODO add your handling code here:
-          if (!clientes.getText().equals("")){ //que no este vacia
-            
-             try{ //intentar conversion a entero
-                    int cantidad=Integer.parseInt(clientes.getText());
-                    
-                    if (restaurant.existeMesa(cantidad)==true){
-                        
-                        JOptionPane.showMessageDialog(this," Si existe una mesa con los requerimentos " ," Notificacion ", 1); //1 ,simbolo de notificacion
-                        int tam=iiproyecto.main.restaurante.getMesas().size();
-                        //acceder al arreglo de mesas
-                        ArrayList <Mesa> table=iiproyecto.main.restaurante.getMesas();
-                        int numeroMesa=0;
-                        
-                        for (int i = 0; i < tam; i++) {
-                            
-                            if ((table.get(i).getEstado()!=true)&&(table.get(i).getCapacidad()==cantidad)){
-                            
-                                numeroMesa=table.get(i).getNumero();
-                                iiproyecto.main.restaurante.ocuparMesa(numeroMesa); //se ocupa la mesa
-                                cambiarImagenOcupada(numeroMesa-1);
-                                Orden orden=new Orden();     //se hace una nueva orden para el cliente;
-                                orden.setMesa(table.get(i)); //se relaciona con una mesa
-                                main.restaurante.agregarOrden(orden); //se agrega la orden
-                                tab=numeroMesa;
-                                asignacionMesa=true;
-                                break;
-                            }
-                        }
-                    }
-                    else{
-                         JOptionPane.showMessageDialog(this," No existe una mesa con los requerimentos " ," Notificacion ", 0);
-                    }
-                    
-                }
-                
-                catch(NumberFormatException e){
-                    
-                    JOptionPane.showMessageDialog(this," El dato ingresado no es un número" ," Alerta de Sistema ", 0);
-                }
-                
-                //limpiar el campo de texto
-                finally{
-                      clientes.setText("");
-                }
-        
-      
-          }
-    
-    }//GEN-LAST:event_buscarActionPerformed
-
     
     public void cambiarImagenOcupada(int num){
     ImageIcon imag;
@@ -997,112 +880,6 @@ public class VentanaPrin extends javax.swing.JFrame {
     
     }
     
-    private void asignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarActionPerformed
-        // TODO add your handling code here:
-         if (!id.getText().equals("")){ //que no este vacia
-            
-             try{ //intentar conversion a entero
-                    int cedula=Integer.parseInt(id.getText());
-                    
-                    if (restaurant.buscarMesero(cedula)!=null){
-                        //realizar accion
-                        Mesero mesero=restaurant.buscarMesero(cedula);
-                        JOptionPane.showMessageDialog(this,mesero.getNombre()+" fue asignado para la atención de la mesa " ," Notificacion ", 1);
-                        
-                        Orden orden=restaurant.obtenerOrden(tab); //obtener la orden del numero de mesa especificado
-                        orden.setMesero(mesero); //se asigna el mesero
-                        mesero.setCantidadMesasAtendidas(mesero.getCantidadMesasAtendidas()+1); //se aumenta las mesas atendidas por el mesero
-                        asignacionMesero=true;
-                    }
-                    else{
-                         JOptionPane.showMessageDialog(this," El numero ingresado no corresponde a ningún mesero " ," Notificacion ", 0);
-                    }
-                    
-                }
-                
-                catch(NumberFormatException e){
-                    
-                    JOptionPane.showMessageDialog(this," El dato ingresado no es un número" ," Alerta de Sistema ", 0);
-                }
-                
-                //limpiar el campo de texto
-                finally{
-                      id.setText("");
-                }
-        
-            
-        }
-        
-    }//GEN-LAST:event_asignarActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        
-        if ((asignacionMesa==true)&&(asignacionMesero==true)){
-             
-           JOptionPane.showMessageDialog(this," Gracias por preferirnos, esperamos la pase bien" ," Bienvenida ", 1);
-           asignacionMesero=false;
-           asignacionMesa=false; //reestablecer estados
-        }
-        
-        else{
-          JOptionPane.showMessageDialog(this,"Recuerde asignar un mesero a su mesa, y verifcar que existan mesas disponibles" ," Alerta de sistema ", 0);
-
-        }
-        
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void ordenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenaActionPerformed
-        // TODO add your handling code here:
-        botonOrden=true;
-    }//GEN-LAST:event_ordenaActionPerformed
-
-    private void ordenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenesActionPerformed
-        // TODO add your handling code here:
-        botonVerOrdenes=true; //habilitar accion
-    }//GEN-LAST:event_ordenesActionPerformed
-
-    private void pedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidosActionPerformed
-        // TODO add your handling code here:
-        //habilitar boton
-        if (restaurant.getColaPedidos().size()>0){
- 
-       
-        this.setVisible(false);
-        new Ventanas.VistaPedidos().setVisible(true); //se pasa como parametro la orden a la que se relaciona la mesa
-        }
-       
-        else{
-         JOptionPane.showMessageDialog(this," No existen pedidos pendientes  " ," Notificación ", 1);
-        }
-        
-    }//GEN-LAST:event_pedidosActionPerformed
-
-    private void botonCocinerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCocinerosActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        new VistaCocineros().setVisible(true);
-    }//GEN-LAST:event_botonCocinerosActionPerformed
-
-    private void pagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagActionPerformed
-        // TODO add your handling code here:
-        
-        botonPagar=true;
-        Object [] botones = {" Individual", " Grupal"};
-            int otra = JOptionPane.showOptionDialog(null," Le pedimos seleccione el tipo de pago","Pregunta de Sistema", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,botones,botones[0]);
-            if (otra == 0){
-                
-                tipoPago=1; //normal
-                
-            }
-            
-            else{
-                tipoPago=2; //grupal
-            }
-        
-    }//GEN-LAST:event_pagActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -1150,26 +927,12 @@ public class VentanaPrin extends javax.swing.JFrame {
     private javax.swing.JButton ButtonMesa7;
     private javax.swing.JButton ButtonMesa8;
     private javax.swing.JButton ButtonMesa9;
-    public static javax.swing.JLabel NombreRestaurante;
     private javax.swing.JButton asignar;
-    public static javax.swing.JButton botonBebida;
-    public static javax.swing.JButton botonCedula;
     private javax.swing.JButton botonCocineros;
-    public static javax.swing.JButton botonPlato;
     private javax.swing.JButton buscar;
-    public static javax.swing.JTextField cantidad;
-    public static javax.swing.JTextField cantidad2;
-    public static javax.swing.JTextField cedula;
-    public static javax.swing.JLabel cliente;
     private javax.swing.JTextField clientes;
-    public static javax.swing.JComboBox<String> combo;
-    public static javax.swing.JLabel direccion;
     private javax.swing.JTextField id;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -1177,7 +940,6 @@ public class VentanaPrin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1187,17 +949,8 @@ public class VentanaPrin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    public javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel mesa1;
@@ -1212,14 +965,9 @@ public class VentanaPrin extends javax.swing.JFrame {
     private javax.swing.JLabel mesa8;
     private javax.swing.JLabel mesa9;
     private javax.swing.JLabel nombre;
-    public static javax.swing.JTextField nombrePlato;
     private javax.swing.JButton ordena;
     private javax.swing.JButton ordenes;
     private javax.swing.JButton pag;
-    public static javax.swing.JLabel pago;
     private javax.swing.JButton pedidos;
-    private javax.swing.JTable table;
-    public static javax.swing.JLabel telefono;
-    static javax.swing.JTextField tipoBebida;
     // End of variables declaration//GEN-END:variables
 }

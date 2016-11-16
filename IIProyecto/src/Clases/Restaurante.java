@@ -321,19 +321,70 @@ public class Restaurante {
     
     //buscar mesero del mes reporte devuelve un objeto tipo mesero
     public Mesero buscarMeseroDelMes(){
+        Mesero devolver=null;
+        Mesero temp;
+        int cuanto=0;
+        for (int i = 0; i <this.empleados.size(); i++) {
+            
+            if (this.empleados.get(i) instanceof Mesero){
+            
+                temp=(Mesero) this.empleados.get(i);
+                if (temp.getCantidadMesasAtendidas()>cuanto){
+                cuanto=temp.getCantidadMesasAtendidas();
+                devolver=temp;
+                }
+            }
+            
+        }
     
-    return null;
+    return devolver;
     }
     
     //buscar cocinero del mes, devuelve un objeto tipo cocinero
     public Cocinero buscarCocineroDelMes(){
+        Cocinero devolver=null;
+        Cocinero temp;
+        int cuanto=0;
+        for (int i = 0; i <this.empleados.size(); i++) {
+            
+            if (this.empleados.get(i) instanceof Cocinero){
+            
+                temp=(Cocinero) this.empleados.get(i);
+                if (temp.getCantidadPedidosAtendidos()>cuanto){
+                    cuanto=temp.getCantidadPedidosAtendidos();
+                    devolver=temp;
+                }
+            }
+            
+        }
     
-    return null;
+    return devolver;
+   
     }
    
     //se busca los platos mas consumidos, y se devuelven en un string
     public String obtenerPlatosMasConsumidos(){
-    
+        Plato uno;
+        Plato dos;
+        ArrayList<Plato> temp=this.menu.getPlatos(); //enlace a platos
+        int vecesUno=0;
+        int vecesDos=0;
+        
+        for (int i = 0; i < temp.size(); i++) {
+            
+            if (temp.get(i).getVecesConsumido()>vecesUno){
+                vecesUno=temp.get(i).getVecesConsumido();
+                uno=temp.get(i);
+                
+            }
+            
+            else if (temp.get(i).getVecesConsumido()>vecesDos){
+                vecesDos=temp.get(i).getVecesConsumido();
+                dos=temp.get(i);
+            }
+            
+        }
+        
     return "";
     }
     
@@ -361,9 +412,9 @@ public class Restaurante {
             total[num]=plat.get(i).getNombre(); // nombre del plato; buscar en facturas su consumo
             int consumo=0;
             for (int j = 0; j < this.facturas.size(); j++) {
-                String temp[]=this.facturas.get(j).getFechaYHora().split("/");
+               
                 
-                if (Integer.parseInt(temp[1])==numeroMes){
+                if ((this.facturas.get(j).getFechaYHora().getMonth()+1)==numeroMes){
                 ArrayList<Detalle> ord=this.facturas.get(j).getOrden().getDetalles(); //obtener la orden de la factura
                
                 for (int x=0;x<ord.size();x++){
@@ -396,15 +447,15 @@ public class Restaurante {
             total[num]=beb.get(i).getNombre(); // nombre del plato; buscar en facturas su consumo
             int consumo=0;
             for (int j = 0; j < this.facturas.size(); j++) {
-                String temp[]=this.facturas.get(j).getFechaYHora().split("/");
+             
                 
-                if ((Integer.parseInt(temp[1])==mes)&&(Integer.parseInt(temp[0]==dia))){
+                if ((this.facturas.get(j).getFechaYHora().getMonth()+1==mes)&&(this.facturas.get(i).getFechaYHora().getDay()+1==dia)){ //comparacion
                 ArrayList<Detalle> ord=this.facturas.get(j).getOrden().getDetalles(); //obtener la orden de la factura
                
                 for (int x=0;x<ord.size();x++){
                 
                     if (ord.get(x).getPlato()!=null){
-                        if (ord.get(x).getPlato().getNombre().equals(plat.get(i).getNombre())){ //comparacion de nombres
+                        if (ord.get(x).getPlato().getNombre().equals(beb.get(i).getNombre())){ //comparacion de nombres
                             consumo+=ord.get(x).getCantidad(); //suma la cantidad que se sirvió de ese plato
                             
                         }

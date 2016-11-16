@@ -15,9 +15,8 @@ public class Cocinero extends Empleado{
 
       //atributos
     private String especialidad;
-    private int cantidadPlatilosCocinados=0;
-    private int cantidadBebidasPreparadas=0;
-    
+    private int cantidadPedidosAtendidos=0;
+   
     private ArrayList<Pedido> listaPedidos;
     
     
@@ -38,23 +37,15 @@ public class Cocinero extends Empleado{
         this.especialidad = especialidad;
     }
 
-    //se obtiene el total de platos que ha cocinado
-    public int getCantidadPlatilosCocinados() {
-        return cantidadPlatilosCocinados;
+    public int getCantidadPedidosAtendidos() {
+        return cantidadPedidosAtendidos;
     }
 
-    public void setCantidadPlatilosCocinados(int cantidadPlatilosCocinados) {
-        this.cantidadPlatilosCocinados = cantidadPlatilosCocinados;
+    public void setCantidadPedidosAtendidos(int cantidadPedidosAtendidos) {
+        this.cantidadPedidosAtendidos = cantidadPedidosAtendidos;
     }
 
-    //se obtiene el total de bebidas preparadas por él
-    public int getCantidadBebidasPreparadas() {
-        return cantidadBebidasPreparadas;
-    }
-
-    public void setCantidadBebidasPreparadas(int cantidadBebidasPreparadas) {
-        this.cantidadBebidasPreparadas = cantidadBebidasPreparadas;
-    }
+    
 
     public ArrayList<Pedido> getListaPedidos() {
         return listaPedidos;
@@ -64,20 +55,21 @@ public class Cocinero extends Empleado{
         
         if (this.listaPedidos.size()==0){
         this.listaPedidos.add(Pedidos);
+        this.setCantidadPedidosAtendidos(this.getCantidadPedidosAtendidos()+1);
         }
         
         else{
             if (this.listaPedidos.get(0).getPlato()!=null){
                 if (listaPedidos.get(0).getPlato().getNombre().equals(Pedidos.getPlato().getNombre())){
                 this.listaPedidos.add(Pedidos);
-                
+                this.setCantidadPedidosAtendidos(this.getCantidadPedidosAtendidos()+1);
                 }
             }
             
             else{
                 if (listaPedidos.get(0).getBebida().getNombre().equals(Pedidos.getBebida().getNombre())){
                 this.listaPedidos.add(Pedidos);
-                
+                this.setCantidadPedidosAtendidos(this.getCantidadPedidosAtendidos()+1);
                 }
             }
         }
@@ -126,11 +118,12 @@ public class Cocinero extends Empleado{
     
     this.listaPedidos.clear(); // se eliminan los platos que ya hizo
     }
-    
+
     @Override
     public String toString() {
-        return super.toString()+"Cocinero{" + "especialidad=" + especialidad + ", cantidadPlatilosCocinados=" + cantidadPlatilosCocinados + ", cantidadBebidasPreparadas=" + cantidadBebidasPreparadas + '}';
+        return "Cocinero{" + "especialidad=" + especialidad + ", cantidadPedidosAtendidos=" + cantidadPedidosAtendidos + ", listaPedidos=" + listaPedidos.size() + '}';
     }
+    
     
   
     
