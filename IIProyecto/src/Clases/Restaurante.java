@@ -6,6 +6,9 @@
 package Clases;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -26,7 +29,7 @@ public class Restaurante {
     private ArrayList <Mesa> mesas; //mesas que contiene el restaurante
     private ArrayList <Factura> facturas; //se almacena copias de las facturas
     private ArrayList<Orden> ordenes;
-   
+    public  ArrayList<String> listaClientes = new ArrayList<String>();
     private Menu menu; //el menu del restaurante
     
 
@@ -320,22 +323,33 @@ public class Restaurante {
     }
     
     //buscar mesero del mes reporte devuelve un objeto tipo mesero
-    public Mesero buscarMeseroDelMes(){
+    public Mesero buscarMeseroDelMes(int mes,int anio){
         Mesero devolver=null;
         Mesero temp;
         int cuanto=0;
         for (int i = 0; i <this.empleados.size(); i++) {
-            
+            int sumador=0;
             if (this.empleados.get(i) instanceof Mesero){
             
                 temp=(Mesero) this.empleados.get(i);
-                if (temp.getCantidadMesasAtendidas()>cuanto){
-                cuanto=temp.getCantidadMesasAtendidas();
-                devolver=temp;
+                
+                 for (int j = 0; j < this.facturas.size(); j++) {
+               
+                
+                if ((this.facturas.get(j).getFechaYHora().getMonth() == mes-1)&&(this.facturas.get(j).getFechaYHora().getYear()+1900 == anio)){
+                    if(this.facturas.get(j).getOrden().getMesero().getCedula().equals(temp.getCedula())){
+                        sumador++;
+                    
                 }
             }
             
-        }
+        }//final for de facturas
+           if (sumador>cuanto){  //si este mesero atendio mas mesas
+               devolver=temp;
+               cuanto=sumador;
+           }      
+            }   
+        } //final for principal
     
     return devolver;
     }
@@ -348,7 +362,6 @@ public class Restaurante {
         for (int i = 0; i <this.empleados.size(); i++) {
             
             if (this.empleados.get(i) instanceof Cocinero){
-            
                 temp=(Cocinero) this.empleados.get(i);
                 if (temp.getCantidadPedidosAtendidos()>cuanto){
                     cuanto=temp.getCantidadPedidosAtendidos();
@@ -363,42 +376,84 @@ public class Restaurante {
     }
    
     //se busca los platos mas consumidos, y se devuelven en un string
-    public String obtenerPlatosMasConsumidos(){
-        Plato uno;
-        Plato dos;
+    public ArrayList<Plato> obtenerPlatosMasConsumidos(){
+        Plato uno = null;
+        Plato dos = null;
+        ArrayList<Plato> plati = new ArrayList();
         ArrayList<Plato> temp=this.menu.getPlatos(); //enlace a platos
         int vecesUno=0;
         int vecesDos=0;
         
         for (int i = 0; i < temp.size(); i++) {
-            
             if (temp.get(i).getVecesConsumido()>vecesUno){
+                dos = uno;
+                vecesDos = vecesUno;
                 vecesUno=temp.get(i).getVecesConsumido();
                 uno=temp.get(i);
                 
             }
             
-            else if (temp.get(i).getVecesConsumido()>vecesDos){
+            else if ((temp.get(i).getVecesConsumido()>vecesDos)&&(temp.get(i).getVecesConsumido()<vecesUno)){
                 vecesDos=temp.get(i).getVecesConsumido();
                 dos=temp.get(i);
             }
             
         }
-        
-    return "";
+        plati.add (uno);
+        plati.add (dos);
+    return plati;
     }
     
     //se busca el cliente mas frecuente, devuelve un objeto tipo cliente
-    public Cliente obtenerClienteMasFrecuente(){
-    
-    
-    return null;
+    public ArrayList obtenerClienteMasFrecuente(){
+        ArrayList temp1 = new ArrayList();
+        int cont = 1, tempCont = 0;
+        String cliente = listaClientes.get(0);
+        String temp = "";
+        for (int i = 0; i < (listaClientes.size() - 1); i++)
+        {
+          temp = listaClientes.get(i);
+          tempCont = 0;
+          for (int j = 1; j < listaClientes.size(); j++)
+          {
+            if (temp.equals(listaClientes.get(j)))
+              tempCont++;
+          }
+          if (tempCont > cont)
+          {
+            cliente = temp;
+            cont = tempCont;
+          }
+        }
+        temp1.add(cliente);
+        temp1.add(cont);
+        return temp1;
     }
     
     //buscar a que hora esta mas lleno el restaurante, devuelve un string con la hora
-    public String restauranteHoraMasLleno(){
-    
-    return null;
+    public int restauranteHoraMasLleno(){
+        ArrayList <Factura> fac = this.facturas;
+        Date temp = null;
+        Date fec = null;
+        int hora = 0;
+        int contFac = 0,tempCont;
+        
+        for (int i = 0; i < (fac.size() - 1); i++)
+        {
+          temp = fac.get(i).getFechaYHora();
+          tempCont = 0;
+          for (int j = 1; j < fac.size(); j++)
+          {
+            if (temp.getHours() == fac.get(j).getFechaYHora().getHours())
+              tempCont++;
+          }
+          if (tempCont > contFac)
+          {
+            fec = temp;
+            contFac = tempCont;
+          }
+        }
+    return fec.getHours();
     }
     
     //devuelve cantidad de veces que se sirvieron los platos en un mes
@@ -437,25 +492,24 @@ public class Restaurante {
     }
  
      //devuelve cantidad de veces que se sirvieron las bebidas en un dia en un arreglo
-    public String[] totalPorTipoBebidasServidasEnUnDia(int dia,int mes){
+    public String[] totalPorTipoBebidasServidasEnUnDia(Date dia){
         
         ArrayList<Bebida> beb=this.menu.getBebidas(); //acceso a la lista de platos
         String tot[]=this.tiposDeBebidasDisponibles.split(",");
         String total[]=new String [(tot.length)*2];
-        for (int i=0;i<beb.size();i++){
+        for (int i=0;i<tot.length;i++){
             int num=i+i;
-            total[num]=beb.get(i).getNombre(); // nombre del plato; buscar en facturas su consumo
+            total[num]=tot[i]; // nombre del plato; buscar en facturas su consumo
             int consumo=0;
             for (int j = 0; j < this.facturas.size(); j++) {
              
-                
-                if ((this.facturas.get(j).getFechaYHora().getMonth()+1==mes)&&(this.facturas.get(i).getFechaYHora().getDay()+1==dia)){ //comparacion
-                ArrayList<Detalle> ord=this.facturas.get(j).getOrden().getDetalles(); //obtener la orden de la factura
-               
+                Date d = this.facturas.get(j).getFechaYHora();
+                if ((d.getYear()==dia.getYear())&&(d.getMonth()==dia.getMonth())&&(d.getDay()==dia.getDay())){ //comparacion
+                    ArrayList<Detalle> ord=this.facturas.get(j).getOrden().getDetalles(); //obtener la orden de la factura
                 for (int x=0;x<ord.size();x++){
                 
-                    if (ord.get(x).getPlato()!=null){
-                        if (ord.get(x).getPlato().getNombre().equals(beb.get(i).getNombre())){ //comparacion de nombres
+                    if (ord.get(x).getBebida()!=null){
+                        if (ord.get(x).getBebida().getTipo().equals(tot[i])){ //comparacion de nombres
                             consumo+=ord.get(x).getCantidad(); //suma la cantidad que se sirvió de ese plato
                             
                         }
@@ -463,7 +517,6 @@ public class Restaurante {
                 }
                 
                 }
-                
             }
             total[num+1]=String.valueOf(consumo);
         }

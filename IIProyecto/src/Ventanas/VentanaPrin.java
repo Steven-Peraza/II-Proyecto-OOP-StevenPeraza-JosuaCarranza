@@ -6,19 +6,24 @@
 
 package Ventanas;
 
-import Clases.Mesa;
-import Clases.Mesero;
-import Clases.Orden;
-import Clases.Restaurante;
+import Clases.*;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import iiproyecto.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 /**
  *
  * @author Steven
@@ -37,6 +42,10 @@ public class VentanaPrin extends javax.swing.JFrame {
     boolean botonVerPedidos=false;
     boolean botonPagar =false;
     int tipoPago=0;
+    private int mes;
+    private int anio;
+    private Date dia;
+    
 
     public VentanaPrin() {
         initComponents();
@@ -57,6 +66,12 @@ public class VentanaPrin extends javax.swing.JFrame {
         array[8]=ButtonMesa9;
         array[9]=ButtonMesa10;
         array[10]=ButtonMesa11;
+        panelRep.setVisible(true);
+        panelRep2.setVisible(true);
+        panelTotClientes.setVisible(false);
+        panelTotVendido.setVisible(false);
+        panelBebRep.setVisible(false);
+        panelPlatillos.setVisible(false);
     
         
         mesa1.setText("Cap: " + String.valueOf(restaurant.getMesas().get(0).getCapacidad()));                                       
@@ -152,6 +167,66 @@ public class VentanaPrin extends javax.swing.JFrame {
         asignar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         logo = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        opcionesRep = new javax.swing.JComboBox<>();
+        panelRep = new javax.swing.JPanel();
+        panelPlatillos = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablaTotPlatillos1 = new javax.swing.JTable();
+        jLabel29 = new javax.swing.JLabel();
+        mesPlatillos = new javax.swing.JComboBox<>();
+        BotonTotPlatillos = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        panelBebRep = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        BotonTotBebidas = new javax.swing.JButton();
+        fechaBeb = new javax.swing.JFormattedTextField();
+        jLabel32 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tablaTotBebidas = new javax.swing.JTable();
+        panelRep2 = new javax.swing.JPanel();
+        panelTotClientes = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tablaTotClientes = new javax.swing.JTable();
+        botonClientes = new javax.swing.JButton();
+        anioClientes = new javax.swing.JComboBox<>();
+        panelTotVendido = new javax.swing.JPanel();
+        jLabel34 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tablaTotVendido = new javax.swing.JTable();
+        botonTotVen = new javax.swing.JButton();
+        anioVen = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        botonEmpMes = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        plati1 = new javax.swing.JTextField();
+        plati2 = new javax.swing.JTextField();
+        botonPlatCon = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        horaPico = new javax.swing.JTextField();
+        botonPico = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        clienFrec = new javax.swing.JTextField();
+        botonFrec = new javax.swing.JButton();
+        anioEmp = new javax.swing.JComboBox<>();
+        mesEmp = new javax.swing.JComboBox<>();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        meseMes = new javax.swing.JTextField();
+        cociMes = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        can1 = new javax.swing.JTextField();
+        can2 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        canVisi = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("VENTANA PRINCIPAL");
@@ -462,7 +537,7 @@ public class VentanaPrin extends javax.swing.JFrame {
                             .addComponent(ButtonMesa10)
                             .addComponent(ButtonMesa11)))
                     .addComponent(mesa11, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ordena)
                     .addComponent(ordenes)
@@ -563,10 +638,547 @@ public class VentanaPrin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16)))
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Llegada de Cliente", jPanel2);
+
+        opcionesRep.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Total Platillos por Mes", "Total Bebidas por Mes", "Total Vendido por Mes/Año", "Total Clientes Atendidos por Mes/Año" }));
+        opcionesRep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcionesRepActionPerformed(evt);
+            }
+        });
+
+        panelRep.setLayout(new javax.swing.OverlayLayout(panelRep));
+
+        panelPlatillos.setLayout(null);
+
+        tablaTotPlatillos1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Platillo", "Cantidad"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tablaTotPlatillos1);
+
+        panelPlatillos.add(jScrollPane4);
+        jScrollPane4.setBounds(68, 78, 452, 92);
+
+        jLabel29.setText("Total de Platillos por Mes");
+        panelPlatillos.add(jLabel29);
+        jLabel29.setBounds(68, 30, 160, 14);
+
+        mesPlatillos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        mesPlatillos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mesPlatillosActionPerformed(evt);
+            }
+        });
+        panelPlatillos.add(mesPlatillos);
+        mesPlatillos.setBounds(422, 47, 79, 20);
+
+        BotonTotPlatillos.setText("Buscar Total");
+        BotonTotPlatillos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonTotPlatillosActionPerformed(evt);
+            }
+        });
+        panelPlatillos.add(BotonTotPlatillos);
+        BotonTotPlatillos.setBounds(68, 181, 110, 23);
+
+        jLabel30.setText("Digite el mes deseado:");
+        panelPlatillos.add(jLabel30);
+        jLabel30.setBounds(412, 30, 140, 14);
+
+        panelRep.add(panelPlatillos);
+
+        jLabel31.setText("Total de Bebidas por Dìa");
+
+        BotonTotBebidas.setText("Buscar Total");
+        BotonTotBebidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonTotBebidasActionPerformed(evt);
+            }
+        });
+
+        try {
+            fechaBeb.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        fechaBeb.setToolTipText("Dia/Mes/Año");
+        fechaBeb.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        jLabel32.setText("Digite el dìa deseado:");
+
+        tablaTotBebidas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Platillo", "Cantidad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(tablaTotBebidas);
+
+        javax.swing.GroupLayout panelBebRepLayout = new javax.swing.GroupLayout(panelBebRep);
+        panelBebRep.setLayout(panelBebRepLayout);
+        panelBebRepLayout.setHorizontalGroup(
+            panelBebRepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 572, Short.MAX_VALUE)
+            .addGroup(panelBebRepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelBebRepLayout.createSequentialGroup()
+                    .addGap(40, 40, 40)
+                    .addGroup(panelBebRepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panelBebRepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel31)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BotonTotBebidas))
+                        .addComponent(jLabel32)
+                        .addComponent(fechaBeb, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(80, Short.MAX_VALUE)))
+        );
+        panelBebRepLayout.setVerticalGroup(
+            panelBebRepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 215, Short.MAX_VALUE)
+            .addGroup(panelBebRepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelBebRepLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(panelBebRepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel31)
+                        .addComponent(jLabel32))
+                    .addGap(5, 5, 5)
+                    .addComponent(fechaBeb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(BotonTotBebidas)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        panelRep.add(panelBebRep);
+
+        panelRep2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelTotClientes.setLayout(null);
+
+        jLabel33.setText("Total Cliente por Mes/Año");
+        panelTotClientes.add(jLabel33);
+        jLabel33.setBounds(38, 21, 124, 14);
+
+        tablaTotClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Mes", "Clientes"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane7.setViewportView(tablaTotClientes);
+
+        panelTotClientes.add(jScrollPane7);
+        jScrollPane7.setBounds(24, 37, 452, 92);
+
+        botonClientes.setText("Mostrar Clientes");
+        botonClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonClientesActionPerformed(evt);
+            }
+        });
+        panelTotClientes.add(botonClientes);
+        botonClientes.setBounds(20, 140, 130, 23);
+
+        anioClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016" }));
+        anioClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anioClientesActionPerformed(evt);
+            }
+        });
+        panelTotClientes.add(anioClientes);
+        anioClientes.setBounds(390, 10, 70, 20);
+
+        panelRep2.add(panelTotClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 500, 167));
+
+        panelTotVendido.setLayout(null);
+
+        jLabel34.setText("Total Vendido por Mes/Año");
+        panelTotVendido.add(jLabel34);
+        jLabel34.setBounds(38, 21, 129, 14);
+
+        tablaTotVendido.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Mes", "Cantidad"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(tablaTotVendido);
+
+        panelTotVendido.add(jScrollPane6);
+        jScrollPane6.setBounds(20, 50, 452, 92);
+
+        botonTotVen.setText("Mostrar Total");
+        botonTotVen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonTotVenActionPerformed(evt);
+            }
+        });
+        panelTotVendido.add(botonTotVen);
+        botonTotVen.setBounds(20, 150, 130, 23);
+
+        anioVen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016" }));
+        anioVen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anioVenActionPerformed(evt);
+            }
+        });
+        panelTotVendido.add(anioVen);
+        anioVen.setBounds(390, 20, 70, 20);
+
+        panelRep2.add(panelTotVendido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -20, 553, 183));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(opcionesRep, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(panelRep2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(panelRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(246, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(opcionesRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(panelRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelRep2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Reportes", jPanel5);
+
+        jLabel1.setText("Empleados del Mes");
+
+        botonEmpMes.setText("Buscar Empleados del Mes");
+        botonEmpMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEmpMesActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Platillos más Consumidos");
+
+        jLabel5.setText("Platillo #1:");
+
+        jLabel6.setText("Platillo #2:");
+
+        plati1.setEditable(false);
+
+        plati2.setEditable(false);
+
+        botonPlatCon.setText("Mostrar Platillos más Cosumidos");
+        botonPlatCon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPlatConActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Hora más Ocupada");
+
+        horaPico.setEditable(false);
+
+        botonPico.setText("Mostrar Hora Pico");
+        botonPico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPicoActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Cliente más Frecuente");
+
+        clienFrec.setEditable(false);
+
+        botonFrec.setText("Buscar Cliente");
+        botonFrec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonFrecActionPerformed(evt);
+            }
+        });
+
+        anioEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016" }));
+        anioEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anioEmpActionPerformed(evt);
+            }
+        });
+
+        mesEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        mesEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mesEmpActionPerformed(evt);
+            }
+        });
+
+        jLabel35.setText("Digite el mes deseado:");
+
+        jLabel36.setText("Digite el año deseado:");
+
+        jLabel9.setText("Mesero del Mes:");
+
+        jLabel10.setText("Cocinero del Mes:");
+
+        meseMes.setEditable(false);
+
+        cociMes.setEditable(false);
+
+        jLabel2.setText("Cantidad:");
+
+        jLabel3.setText("Cantidad:");
+
+        can1.setEditable(false);
+
+        can2.setEditable(false);
+
+        jLabel11.setText("Nombre:");
+
+        jLabel12.setText("Cantidad de veces:");
+
+        canVisi.setEditable(false);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonPico)
+                            .addComponent(botonEmpMes)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10))
+                                .addGap(31, 31, 31)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(meseMes)
+                                    .addComponent(cociMes, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(horaPico, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(291, 291, 291)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(clienFrec, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addGap(377, 377, 377)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(botonFrec, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(canVisi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(278, 278, 278)
+                                        .addComponent(jLabel4))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel11)
+                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                                    .addComponent(jLabel6)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(plati2))
+                                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                                    .addComponent(jLabel5)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(plati1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel12)
+                                        .addGap(128, 128, 128)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(anioEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(mesEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(237, 237, 237)
+                                .addComponent(botonPlatCon)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(can1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                            .addComponent(can2))
+                        .addGap(152, 152, 152))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addGap(3, 3, 3)
+                        .addComponent(mesEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel36))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(plati1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(can1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(plati2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(can2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonPlatCon)
+                    .addComponent(anioEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(meseMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(cociMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(botonEmpMes)
+                .addGap(78, 78, 78)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(horaPico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clienFrec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(canVisi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonPico)
+                    .addComponent(botonFrec))
+                .addGap(53, 53, 53))
+        );
+
+        jTabbedPane1.addTab("Consultas", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -800,6 +1412,482 @@ public class VentanaPrin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_ButtonMesa1ActionPerformed
 
+    private void opcionesRepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionesRepActionPerformed
+        int opcion = opcionesRep.getSelectedIndex();
+
+        switch (opcion) {
+            case 0:
+            panelBebRep.setVisible(false);
+            panelTotVendido.setVisible(false);
+            panelTotClientes.setVisible(false);
+            panelPlatillos.setVisible(true);
+            break;
+            case 1:
+            panelPlatillos.setVisible(false);
+            panelTotVendido.setVisible(false);
+            panelTotClientes.setVisible(false);
+            panelBebRep.setVisible(true);
+            break;
+            case 2:
+            panelBebRep.setVisible(false);
+            panelPlatillos.setVisible(false);
+            panelTotClientes.setVisible(false);
+            panelTotVendido.setVisible(true);
+            break;
+            case 3:
+            panelBebRep.setVisible(false);
+            panelPlatillos.setVisible(false);
+            panelTotVendido.setVisible(false);
+            panelTotClientes.setVisible(true);
+            break;
+            default:
+            break;
+        }
+    }//GEN-LAST:event_opcionesRepActionPerformed
+
+    private void mesPlatillosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesPlatillosActionPerformed
+        int opcion = mesPlatillos.getSelectedIndex();
+        switch (opcion) {
+            case 0:
+            mes = 1;
+            break;
+            case 1:
+            mes = 2;
+            break;
+            case 2:
+            mes = 3;
+            break;
+            case 3:
+            mes = 4;
+            break;
+            case 4:
+            mes = 5;
+            break;
+            case 5:
+            mes = 6;
+            break;
+            case 6:
+            mes = 7;
+            break;
+            case 7:
+            mes = 8;
+            break;
+            case 8:
+            mes = 9;
+            break;
+            case 9:
+            mes = 10;
+            break;
+            case 10:
+            mes = 11;
+            break;
+            case 11:
+            mes = 12;
+            break;
+            default:
+            break;
+        }
+    }//GEN-LAST:event_mesPlatillosActionPerformed
+
+    private void BotonTotPlatillosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTotPlatillosActionPerformed
+        String tt[];
+        DefaultTableModel model = (DefaultTableModel) tablaTotPlatillos1.getModel();
+        for( int i = model.getRowCount() - 1; i >= 0; i-- )
+        {
+            model.removeRow(i);
+        }
+        tt = restaurant.totalPorPlatoServidoEnUnMes(mes);
+        for (int i = 0; i < tt.length; i+=2) {
+            if (!"0".equals(tt[i+1]))
+                model.addRow(new Object[]{tt[i],tt[i+1]});      
+        }
+    }//GEN-LAST:event_BotonTotPlatillosActionPerformed
+
+    private void BotonTotBebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTotBebidasActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tablaTotBebidas.getModel();
+        for( int i = model.getRowCount() - 1; i >= 0; i-- )
+        {
+            model.removeRow(i);
+        }
+        String tt[];
+        String string = fechaBeb.getText();
+        DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
+        try {
+            dia = format.parse(string);
+        } catch (ParseException ex) {
+            Logger.getLogger(VentanaPrin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tt = restaurant.totalPorTipoBebidasServidasEnUnDia(dia);
+        for (int i = 0; i < tt.length; i+=2) {
+                model.addRow(new Object[]{tt[i],tt[i+1]});      
+        }
+    }//GEN-LAST:event_BotonTotBebidasActionPerformed
+
+    private void botonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonClientesActionPerformed
+        ArrayList <Factura> factu =restaurant.getFacturas();
+        DefaultTableModel model = (DefaultTableModel) tablaTotClientes.getModel();
+        int clixmes = 0;
+        int clitot = 0;
+        String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre","Total"};
+
+        for (int i = 0;i < 13;i++){
+            model.setValueAt(0, i, 1);
+            model.setValueAt(meses[i],i,0);
+        }
+
+        for (int i=0;i<factu.size();i++){;
+            if (factu.get(i).getFechaYHora().getYear()+1900 == anio){
+            switch (factu.get(i).getFechaYHora().getMonth()) {
+                case 0:
+                    clixmes = (int)model.getValueAt(0, 1)+1;
+                    model.setValueAt(clixmes,0, 1);
+                    break;
+                case 1:
+                    clixmes = (int)model.getValueAt(1, 1)+1;
+                    model.setValueAt(clixmes,1, 1);
+                    break;
+                case 2:
+                    clixmes = (int)model.getValueAt(2, 1)+1;
+                    model.setValueAt(clixmes,2, 1);
+                    break;
+                case 3:
+                    clixmes = (int)model.getValueAt(3, 1)+1;
+                    model.setValueAt(clixmes,3, 1);
+                    break;
+                case 4:
+                    clixmes = (int)model.getValueAt(4, 1)+1;
+                    model.setValueAt(clixmes,4, 1);
+                    break;
+                case 5:
+                    clixmes = (int)model.getValueAt(5, 1)+1;
+                    model.setValueAt(clixmes,5, 1);
+                    break;
+                case 6:
+                    clixmes = (int)model.getValueAt(6, 1)+1;
+                    model.setValueAt(clixmes,6, 1);
+                    break;
+                case 7:
+                    clixmes = (int)model.getValueAt(7, 1)+1;
+                    model.setValueAt(clixmes,7, 1);
+                    break;
+                case 8:
+                    clixmes = (int)model.getValueAt(8, 1)+1;
+                    model.setValueAt(clixmes,8, 1);
+                    break;
+                case 9:
+                    clixmes = (int)model.getValueAt(9, 1)+1;
+                    model.setValueAt(clixmes,9, 1);
+                    break;
+                case 10:
+                    clixmes = (int)model.getValueAt(10, 1)+1;
+                    model.setValueAt(clixmes,10, 1);
+                    break;
+                case 11:
+                    clixmes = (int)model.getValueAt(11, 1)+1;
+                    model.setValueAt(clixmes,11, 1);
+                    break;
+                default:
+                    break;
+            }
+
+            }
+        }
+        
+        for (int i = 0;i < 13;i++){
+            clitot += (int)model.getValueAt(i, 1);
+        }
+        model.setValueAt(clitot, 12, 1);
+        anio = 0;
+    }//GEN-LAST:event_botonClientesActionPerformed
+
+    private void anioClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anioClientesActionPerformed
+        int opcion = anioClientes.getSelectedIndex();
+        switch (opcion) {
+            case 0:
+            anio = 2006;
+            break;
+            case 1:
+            anio = 2007;
+            break;
+            case 2:
+            anio = 2008;
+            break;
+            case 3:
+            anio = 2009;
+            break;
+            case 4:
+            anio = 2010;
+            break;
+            case 5:
+            anio = 2011;
+            break;
+            case 6:
+            anio = 2012;
+            break;
+            case 7:
+            anio = 2013;
+            break;
+            case 8:
+            anio = 2014;
+            break;
+            case 9:
+            anio = 2015;
+            break;
+            case 10:
+            anio = 2016;
+            break;
+            default:
+            break;
+        }
+    }//GEN-LAST:event_anioClientesActionPerformed
+
+    private void botonTotVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTotVenActionPerformed
+        ArrayList <Factura> factu =restaurant.getFacturas();
+        TableModel model = (TableModel) tablaTotVendido.getModel();
+        double venxMes = 0;
+        double totVen = 0;
+        String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre","Total"};
+
+        for (int i = 0;i < 13;i++){
+            model.setValueAt(0.0, i, 1);
+            model.setValueAt(meses[i],i,0);
+        }
+
+        for (int i=0;i<factu.size();i++){;
+            if (factu.get(i).getFechaYHora().getYear()+1900 == anio){
+            switch (factu.get(i).getFechaYHora().getMonth()) {
+                case 0:
+                    venxMes = (double)model.getValueAt(0, 1)+factu.get(i).getPago();
+                    model.setValueAt(venxMes,0, 1);
+                    break;
+                case 1:
+                    venxMes = (double)model.getValueAt(1, 1)+factu.get(i).getPago();
+                    model.setValueAt(venxMes,1, 1);
+                    break;
+                case 2:
+                    venxMes = (double)model.getValueAt(2, 1)+factu.get(i).getPago();
+                    model.setValueAt(venxMes,2, 1);
+                    break;
+                case 3:
+                    venxMes = (double)model.getValueAt(3, 1)+factu.get(i).getPago();
+                    model.setValueAt(venxMes,3, 1);
+                    break;
+                case 4:
+                    venxMes = (double)model.getValueAt(4, 1)+factu.get(i).getPago();
+                    model.setValueAt(venxMes,4, 1);
+                    break;
+                case 5:
+                    venxMes = (double)model.getValueAt(5, 1)+factu.get(i).getPago();
+                    model.setValueAt(venxMes,5, 1);
+                    break;
+                case 6:
+                    venxMes = (double)model.getValueAt(6, 1)+factu.get(i).getPago();
+                    model.setValueAt(venxMes,6, 1);
+                    break;
+                case 7:
+                    venxMes = (double)model.getValueAt(7, 1)+factu.get(i).getPago();
+                    model.setValueAt(venxMes,7, 1);
+                    break;
+                case 8:
+                    venxMes = (double)model.getValueAt(8, 1)+factu.get(i).getPago();
+                    model.setValueAt(venxMes,8, 1);
+                    break;
+                case 9:
+                    venxMes = (double)model.getValueAt(9, 1)+factu.get(i).getPago();
+                    model.setValueAt(venxMes,9, 1);
+                    break;
+                case 10:
+                    venxMes = (double)model.getValueAt(10, 1)+factu.get(i).getPago();
+                    model.setValueAt(venxMes,10, 1);
+                    break;
+                case 11:
+                    venxMes = (double)model.getValueAt(11, 1)+factu.get(i).getPago();
+                    model.setValueAt(venxMes,11, 1);
+                    break;
+                default:
+                    break;
+            }
+
+            }
+        }
+        
+        for (int i = 0;i < 13;i++){
+            totVen += (double)model.getValueAt(i, 1);
+        }
+        model.setValueAt(totVen, 12, 1);
+        anio = 0;
+    }//GEN-LAST:event_botonTotVenActionPerformed
+
+    private void anioVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anioVenActionPerformed
+        int opcion = anioVen.getSelectedIndex();
+        switch (opcion) {
+            case 0:
+            anio = 2006;
+            break;
+            case 1:
+            anio = 2007;
+            break;
+            case 2:
+            anio = 2008;
+            break;
+            case 3:
+            anio = 2009;
+            break;
+            case 4:
+            anio = 2010;
+            break;
+            case 5:
+            anio = 2011;
+            break;
+            case 6:
+            anio = 2012;
+            break;
+            case 7:
+            anio = 2013;
+            break;
+            case 8:
+            anio = 2014;
+            break;
+            case 9:
+            anio = 2015;
+            break;
+            case 10:
+            anio = 2016;
+            break;
+            default:
+            break;
+        }
+    }//GEN-LAST:event_anioVenActionPerformed
+
+    private void botonEmpMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEmpMesActionPerformed
+        Mesero meseroMes = null;
+        Cocinero cookMes = null;
+        
+        meseroMes = restaurant.buscarMeseroDelMes(mes,anio);
+        cookMes = restaurant.buscarCocineroDelMes();
+        
+        if (!(cookMes == null)&&!(meseroMes == null)){
+            meseMes.setText(meseroMes.getNombre());
+            cociMes.setText(cookMes.getNombre());
+        }
+        else
+            JOptionPane.showMessageDialog(this,"En este mes no se encuentran datos de cocineros o meseros."," Notificación de Sistema", 1);
+    }//GEN-LAST:event_botonEmpMesActionPerformed
+
+    private void botonPlatConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPlatConActionPerformed
+        Plato plat1 = null;
+        Plato plat2 = null;
+        ArrayList <Plato> temp = restaurant.obtenerPlatosMasConsumidos();
+        plati1.setText(temp.get(0).getNombre());
+        plati2.setText(temp.get(1).getNombre());
+        can1.setText(String.valueOf(temp.get(0).getVecesConsumido()));
+        can2.setText(String.valueOf(temp.get(1).getVecesConsumido()));
+    }//GEN-LAST:event_botonPlatConActionPerformed
+
+    private void botonPicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPicoActionPerformed
+        int pico = restaurant.restauranteHoraMasLleno();
+        if (pico < 12)
+            horaPico.setText(String.valueOf(pico) + " AM");
+        else
+        {
+            pico -= 12;
+            horaPico.setText(String.valueOf(pico) + " PM");
+        }
+    }//GEN-LAST:event_botonPicoActionPerformed
+
+    private void botonFrecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFrecActionPerformed
+        ArrayList temp = restaurant.obtenerClienteMasFrecuente();
+        String clienteFrec = (String) temp.get(0);
+        int veces = (int) temp.get(1);
+        clienFrec.setText(clienteFrec);
+        canVisi.setText(String.valueOf(veces));
+    }//GEN-LAST:event_botonFrecActionPerformed
+
+    private void anioEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anioEmpActionPerformed
+        int opcion = anioEmp.getSelectedIndex();
+        switch (opcion) {
+            case 0:
+            anio = 2006;
+            break;
+            case 1:
+            anio = 2007;
+            break;
+            case 2:
+            anio = 2008;
+            break;
+            case 3:
+            anio = 2009;
+            break;
+            case 4:
+            anio = 2010;
+            break;
+            case 5:
+            anio = 2011;
+            break;
+            case 6:
+            anio = 2012;
+            break;
+            case 7:
+            anio = 2013;
+            break;
+            case 8:
+            anio = 2014;
+            break;
+            case 9:
+            anio = 2015;
+            break;
+            case 10:
+            anio = 2016;
+            break;
+            default:
+            break;
+        }
+    }//GEN-LAST:event_anioEmpActionPerformed
+
+    private void mesEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesEmpActionPerformed
+        int opcion = mesEmp.getSelectedIndex();
+        switch (opcion) {
+            case 0:
+            mes = 1;
+            break;
+            case 1:
+            mes = 2;
+            break;
+            case 2:
+            mes = 3;
+            break;
+            case 3:
+            mes = 4;
+            break;
+            case 4:
+            mes = 5;
+            break;
+            case 5:
+            mes = 6;
+            break;
+            case 6:
+            mes = 7;
+            break;
+            case 7:
+            mes = 8;
+            break;
+            case 8:
+            mes = 9;
+            break;
+            case 9:
+            mes = 10;
+            break;
+            case 10:
+            mes = 11;
+            break;
+            case 11:
+            mes = 12;
+            break;
+            default:
+            break;
+        }
+    }//GEN-LAST:event_mesEmpActionPerformed
+
     //recibe el numero de mesa a manejar
     public void manejoMesas(int num){
        
@@ -916,6 +2004,8 @@ public class VentanaPrin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonTotBebidas;
+    private javax.swing.JButton BotonTotPlatillos;
     private javax.swing.JButton ButtonMesa1;
     private javax.swing.JButton ButtonMesa10;
     private javax.swing.JButton ButtonMesa11;
@@ -927,12 +2017,32 @@ public class VentanaPrin extends javax.swing.JFrame {
     private javax.swing.JButton ButtonMesa7;
     private javax.swing.JButton ButtonMesa8;
     private javax.swing.JButton ButtonMesa9;
+    private javax.swing.JComboBox<String> anioClientes;
+    private javax.swing.JComboBox<String> anioEmp;
+    private javax.swing.JComboBox<String> anioVen;
     private javax.swing.JButton asignar;
+    private javax.swing.JButton botonClientes;
     private javax.swing.JButton botonCocineros;
+    private javax.swing.JButton botonEmpMes;
+    private javax.swing.JButton botonFrec;
+    private javax.swing.JButton botonPico;
+    private javax.swing.JButton botonPlatCon;
+    private javax.swing.JButton botonTotVen;
     private javax.swing.JButton buscar;
+    private javax.swing.JTextField can1;
+    private javax.swing.JTextField can2;
+    private javax.swing.JTextField canVisi;
+    private javax.swing.JTextField clienFrec;
     private javax.swing.JTextField clientes;
+    private javax.swing.JTextField cociMes;
+    private javax.swing.JFormattedTextField fechaBeb;
+    private javax.swing.JTextField horaPico;
     private javax.swing.JTextField id;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -940,6 +2050,7 @@ public class VentanaPrin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -949,10 +2060,33 @@ public class VentanaPrin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel logo;
+    private javax.swing.JComboBox<String> mesEmp;
+    private javax.swing.JComboBox<String> mesPlatillos;
     private javax.swing.JLabel mesa1;
     private javax.swing.JLabel mesa10;
     private javax.swing.JLabel mesa11;
@@ -964,10 +2098,24 @@ public class VentanaPrin extends javax.swing.JFrame {
     private javax.swing.JLabel mesa7;
     private javax.swing.JLabel mesa8;
     private javax.swing.JLabel mesa9;
+    private javax.swing.JTextField meseMes;
     private javax.swing.JLabel nombre;
+    private javax.swing.JComboBox<String> opcionesRep;
     private javax.swing.JButton ordena;
     private javax.swing.JButton ordenes;
     private javax.swing.JButton pag;
+    private javax.swing.JPanel panelBebRep;
+    private javax.swing.JPanel panelPlatillos;
+    private javax.swing.JPanel panelRep;
+    private javax.swing.JPanel panelRep2;
+    private javax.swing.JPanel panelTotClientes;
+    private javax.swing.JPanel panelTotVendido;
     private javax.swing.JButton pedidos;
+    private javax.swing.JTextField plati1;
+    private javax.swing.JTextField plati2;
+    private javax.swing.JTable tablaTotBebidas;
+    private javax.swing.JTable tablaTotClientes;
+    private javax.swing.JTable tablaTotPlatillos1;
+    private javax.swing.JTable tablaTotVendido;
     // End of variables declaration//GEN-END:variables
 }
