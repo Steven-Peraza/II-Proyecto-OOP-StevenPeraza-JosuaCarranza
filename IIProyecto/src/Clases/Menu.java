@@ -6,14 +6,16 @@
 package Clases;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-/**
- *
+/*
  * @author Josua
  */
-public class Menu {
+public class Menu extends Observable {
     
     //atributos
+    private Observer observador=null;
     private int cantidadPlatillos=0;
     private  int cantidadBebidas=0;
     private ArrayList <Plato> platos; //platos disponibles en el restaurante
@@ -58,6 +60,22 @@ public class Menu {
     public void setBebidas(Bebida bebidas) {
         this.bebidas.add(bebidas);
     }
+
+    public Observer getObservador() {
+        return observador;
+    }
+
+    public void setObservador(Observer observador) {
+        this.observador = observador;
+    }
+    
+    public void notifyObserver(){
+        //si existe el observador
+        if (this.observador!=null){
+            this.observador.update(this, this);
+        }
+    
+    }
     
     //metodos adicionales
     
@@ -74,6 +92,7 @@ public class Menu {
         }
         
         this.platos.add(plato); //se agrega el plato
+        notifyObserver();
         return true;
     }
     

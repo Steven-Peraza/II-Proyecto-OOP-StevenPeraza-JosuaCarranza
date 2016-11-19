@@ -16,6 +16,7 @@ public class Detalle extends Observable {
     
     //atributos
     Observer observador;
+    Observer observ;
     private Plato plato;
     private Bebida bebida;
     private boolean estado;
@@ -48,7 +49,25 @@ public class Detalle extends Observable {
     public void setObservador(Observer observador) {
         this.observador = observador;
     }
+
+    public Observer getObserv() {
+        return observ;
+    }
+
+    public void setObserv(Observer observ) {
+        this.observ = observ;
+    }
     
+    
+    
+    public void notifyOrden(){  //util para actualizar la ventana
+        if (observ!=null){
+        
+            this.observ.update(this, this);
+        
+        }
+    
+    }
     
     public void notifyObservers(){
     
@@ -88,8 +107,13 @@ public class Detalle extends Observable {
     }
 
     public void setCantidad(int cantidad) {
+        if (cantidad>=0){
         this.cantidad = cantidad;
-    }
+        notifyOrden();
+            }
+        
+        
+        }
     
     
 }

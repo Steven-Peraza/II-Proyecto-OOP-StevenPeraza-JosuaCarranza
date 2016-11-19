@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Josua
  */
-public class VistaFactura extends javax.swing.JFrame  {
+public class VistaFactura extends javax.swing.JFrame{
 
     //static para poder accederla desde el controlador
     public static DefaultTableModel tabla; //necesario para modificar la tabla
@@ -43,6 +43,7 @@ public class VistaFactura extends javax.swing.JFrame  {
     public static Plato dish;
     public static Bebida beverage;
     public static Detalle det;
+    public static VistaOrden v;
     
     //asociando la orden de una mesa en concreto
     public VistaFactura(int num,int tipoPago) {
@@ -402,6 +403,8 @@ public class VistaFactura extends javax.swing.JFrame  {
     public static javax.swing.JLabel tipo;
     public static javax.swing.JTextField vuelto;
     // End of variables declaration//GEN-END:variables
+
+   
 
    
 }

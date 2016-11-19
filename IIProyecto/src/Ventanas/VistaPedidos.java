@@ -273,9 +273,9 @@ public class VistaPedidos extends javax.swing.JFrame {
         int seleccion = elementos.getSelectedRow(); //fila seleccionada
 
         Bebida beb = lista.get(seleccion).getBebida();
-        Plato plato = lista.get(seleccion).getPlato();
+        Plato plato = lista.get(seleccion).getPlato(); //accesando al pedido en esa posicion
 
-        ArrayList<Empleado> temp = iiproyecto.main.restaurante.getEmpleados();
+        ArrayList<Empleado> temp = iiproyecto.main.restaurante.getEmpleados(); 
 
         if (plato != null) {
 

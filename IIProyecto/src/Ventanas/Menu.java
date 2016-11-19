@@ -8,13 +8,15 @@ package Ventanas;
 import Clases.*;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Josua
  */
-public class Menu extends javax.swing.JFrame {
+public class Menu extends javax.swing.JFrame implements Observer {
 
     /**
      * Creates new form Menu
@@ -47,40 +49,16 @@ public class Menu extends javax.swing.JFrame {
         this.addIngredient.setVisible(false);
         this.addToMenu.setVisible(false);
         this.setLocationRelativeTo(null);
-
+        //situando como observador
+        iiproyecto.main.restaurante.getMenu().setObservador(this); 
+        
         this.getContentPane().setBackground(new Color(160, 200, 240));
         menu = restauran.getMenu();
         plato = menu.getPlatos();
         texto.setEditable(false);
         mensaje.setText(orden.getMesero().getNombre() + " espera por su orden");
-
-        // se escribe el menu
-        for (int i = 0; i < plato.size(); i++) {
-            Plato dish = plato.get(i);
-            String tex = "";
-            if (dish.getIngredientes() != null) {
-                String[] ar = dish.getIngredientes();
-                for (int x = 0; x < ar.length; x++) {
-
-                    tex += ar[x];
-                    tex += ",";
-                }
-                tex = tex.substring(0, tex.length() - 1); //modificando cadena
-                texto.append(" " + dish.getNumero() + " " + dish.getNombre() + " " + " Ingredientes: " + tex + " " + dish.getPrecio() + " Colones" + " " + " Calorías: " + dish.getCalorias() + "\n"); //escribiendo datos de plato
-
-            } else {
-                texto.append(" " + dish.getNumero() + " " + dish.getNombre() + " Precio:" + " " + dish.getPrecio() + " Colones" + " " + " Calorías: " + dish.getCalorias() + "\n"); //escribiendo datos de plato
-            }
-        }
-
-        bebida = menu.getBebidas();
-
-        for (int i = 0; i < bebida.size(); i++) {
-            Bebida beverage = bebida.get(i);
-
-            texto.append(" " + beverage.getNumero() + " " + beverage.getNombre() + " " + beverage.getPrecio() + " Colones" + " " + beverage.getMiliLitros() + " ml" + "\n");
-
-        }
+        desplegarMenu();
+        
 
     }
 
@@ -143,6 +121,14 @@ public class Menu extends javax.swing.JFrame {
         texto.setColumns(20);
         texto.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         texto.setRows(5);
+        texto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textoMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                textoMouseReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(texto);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
@@ -331,13 +317,12 @@ public class Menu extends javax.swing.JFrame {
                                 .addGap(19, 19, 19))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(160, 160, 160))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(addIngredient, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(108, 108, 108))))))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(160, 160, 160))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(addIngredient, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,6 +386,37 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void desplegarMenu(){
+    // se escribe el menu
+    plato=menu.getPlatos();
+        for (int i = 0; i < plato.size(); i++) {
+            Plato dish = plato.get(i);
+            String tex = "";
+            if (dish.getIngredientes() != null) {
+                String[] ar = dish.getIngredientes();
+                for (int x = 0; x < ar.length; x++) {
+
+                    tex += ar[x];
+                    tex += ",";
+                }
+                tex = tex.substring(0, tex.length() - 1); //modificando cadena
+                texto.append(" " + dish.getNumero() + " " + dish.getNombre() + " " + " Ingredientes: " + tex + " " + dish.getPrecio() + " Colones" + " " + " Calorías: " + dish.getCalorias() + "\n"); //escribiendo datos de plato
+
+            } else {
+                texto.append(" " + dish.getNumero() + " " + dish.getNombre() + " Precio:" + " " + dish.getPrecio() + " Colones" + " " + " Calorías: " + dish.getCalorias() + "\n"); //escribiendo datos de plato
+            }
+        }
+
+        bebida = menu.getBebidas();
+
+        for (int i = 0; i < bebida.size(); i++) {
+            Bebida beverage = bebida.get(i);
+
+            texto.append(" " + beverage.getNumero() + " " + beverage.getNombre() + " " + beverage.getPrecio() + " Colones" + " " + beverage.getMiliLitros() + " ml" + "\n");
+
+        }
+    }
+    
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
 
@@ -493,7 +509,8 @@ public class Menu extends javax.swing.JFrame {
                 }
                 
                 num=x+1;
-                x++;
+                x+=2;
+                
                 for (int i = 0; i < bebida.size(); i++) {
                      this.bebida.get(i).setNumero(x);
                      x++;
@@ -506,7 +523,7 @@ public class Menu extends javax.swing.JFrame {
                 this.nuevoPlato.setVecesConsumido(this.nuevoPlato.getVecesConsumido() + 1);
                 iiproyecto.main.restaurante.getMenu().agregarPlatillo(this.nuevoPlato); //agrega plato a menu
                 Plato pl = this.nuevoPlato.clone();
-                System.out.println(pl.getPrecio());
+                
                 orden.agregarPlato(pl, can); //un cllon del plato se va a la orden
                 for (int i = 0; i < can; i++) {
                     pl = this.nuevoPlato.clone();
@@ -568,12 +585,30 @@ public class Menu extends javax.swing.JFrame {
         if (!this.nuevoI.getText().equals("")) {
             this.ingr += this.nuevoI.getText();
             this.ingr += ";";
+            this.nuevoI.setText("");
 
         } else {
             JOptionPane.showMessageDialog(this, " No especifico un ingrediente", "Alerta de Sistema", 0);
         }
 
     }//GEN-LAST:event_addIngredientActionPerformed
+
+    private void textoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoMouseClicked
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_textoMouseClicked
+
+    private void textoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoMouseReleased
+        // TODO add your handling code here:
+       if (texto.getSelectedText()!=null){
+       String selected= texto.getSelectedText(); //para que también trabaje pulsando sobre un elemento del menu
+       if (!selected.equals("")){
+           if (selected.length()<=2){
+           this.numeroPlato.setText(selected);
+       }
+       }
+       }
+    }//GEN-LAST:event_textoMouseReleased
 
     /**
      * @param args the command line arguments
@@ -645,4 +680,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField numeroPlato;
     private javax.swing.JTextArea texto;
     // End of variables declaration//GEN-END:variables
+
+    //se conoce si un nuevo plato fue agregado
+    @Override
+    public void update(Observable o, Object o1) {
+        texto.setText(""); //se limpia todo su contenido para volver a reescribirlo
+        desplegarMenu(); //se vuelve a llamar a la funcion que despliega el menu
+    }
 }

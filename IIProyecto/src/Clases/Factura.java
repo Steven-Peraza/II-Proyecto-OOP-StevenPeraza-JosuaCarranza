@@ -19,7 +19,7 @@ public class Factura {
 
     private Cliente cliente;
     private Orden orden;
-    private Pago pago;
+    private double pago;
 
 
     //constructor
@@ -61,11 +61,11 @@ public class Factura {
         this.orden = orden;
     }
 
-    public Pago getPago() {
+    public double getPago() {
         return pago;
     }
 
-    public void setPago(Pago pago) {
+    public void setPago(double pago) {
         this.pago = pago;
     }
     

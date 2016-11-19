@@ -32,6 +32,7 @@ public class Controlador implements ActionListener,Observer{
         this.vista=vista;
         this.total=0;
         this.instanciaFactura.setOrden(VistaFactura.temp); //se agrega una orden
+        this.instanciaFactura.getOrden().setMesero(VistaFactura.orden.getMesero());
         setearTipoPago();
         colocarDatos();
         colocarComoObservador();
@@ -83,7 +84,9 @@ public class Controlador implements ActionListener,Observer{
         }
         else{
             VistaFactura.producto.setEditable(false);
-            new Ventanas.VistaOrden(VistaFactura.orden).setVisible(true);
+            
+            VistaFactura.v=new Ventanas.VistaOrden(VistaFactura.orden);
+            VistaFactura.v.setVisible(true);
             
         }
         
@@ -149,8 +152,17 @@ public class Controlador implements ActionListener,Observer{
                                 iiproyecto.main.restaurante.desocuparMesa(VistaFactura.orden.getMesa().getNumero()); //desocupando mesa
                                 iiproyecto.main.ventana.cambiarImagenDesocupada(VistaFactura.orden.getMesa().getNumero()-1);
                                 iiproyecto.main.restaurante.eliminarOrden(VistaFactura.orden.getMesa().getNumero()); //eliminar esa orden
+                                iiproyecto.main.restaurante.listaClientes.add(VistaFactura.client.getText());//agregando cliente a la lista de clientes
+                                //agregar nombre a lista aqui
+                                if (VistaFactura.tipoPa==1){
+                                    
+                                VistaFactura.v.dispose();
+                                }
                             }
-                            JOptionPane.showMessageDialog(vista," Se ha cancelado la factura, el vuelto del cliente es de "+(String.valueOf(vueltos))," Notificación de Sistema", 1);
+                            if (VistaFactura.tipoPa==1){
+                             VistaFactura.v.dispose();
+                            }
+                            JOptionPane.showMessageDialog(vista," Se ha cancelado la factura, el vuelto del cliente es de "+(String.valueOf(vueltos))+" colones"," Notificación de Sistema", 1);
  
                         }
                         
@@ -241,6 +253,7 @@ public class Controlador implements ActionListener,Observer{
                double impuesto=((VistaFactura.total/100)*6); //un impuesto del 6 por ciento
                 System.out.println(impuesto);
                 this.total+=impuesto;
+                this.instanciaFactura.setPago(this.total);
             //  VistaFactura.total+=impuesto;
                 System.out.println(VistaFactura.total);
                   Object datos[]={"Impuesto","6%","Monto Total",this.total+" Colones"};
@@ -263,10 +276,11 @@ public class Controlador implements ActionListener,Observer{
    
    }
 
+   //notificacion del detalle pulsado en la pantalla
     @Override
     public void update(Observable var, Object o1) {
             VistaFactura.det=(Detalle) var;  //convirtiendo a detalle
-            System.out.println("Notificacion");
+            
             try{
              VistaFactura.beverage=VistaFactura.det.getBebida();
              exponer(VistaFactura.beverage.getNombre());
