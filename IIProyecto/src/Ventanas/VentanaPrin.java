@@ -96,7 +96,6 @@ public class VentanaPrin extends javax.swing.JFrame {
         nombre.setText(iiproyecto.main.restaurante.getNombre());
         
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -785,7 +784,7 @@ public class VentanaPrin extends javax.swing.JFrame {
 
         jLabel33.setText("Total Cliente por Mes/Año");
         panelTotClientes.add(jLabel33);
-        jLabel33.setBounds(38, 21, 124, 14);
+        jLabel33.setBounds(38, 21, 160, 14);
 
         tablaTotClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1783,6 +1782,8 @@ public class VentanaPrin extends javax.swing.JFrame {
         int pico = restaurant.restauranteHoraMasLleno();
         if (pico < 12)
             horaPico.setText(String.valueOf(pico) + " AM");
+        else if (pico == 12)
+            horaPico.setText(String.valueOf(pico) + " PM");
         else
         {
             pico -= 12;
