@@ -87,7 +87,7 @@ public class Detalle extends Observable {
        }
        
        else{
-           notifyObservers();
+           notifyObservers(); //notificar observador
        }
         
     }
@@ -105,15 +105,19 @@ public class Detalle extends Observable {
     public int getCantidad() {
         return cantidad;
     }
-
+//notificar al observador en caso de cambios
     public void setCantidad(int cantidad) {
-        if (cantidad>=0){
+        if (cantidad<0){
+            this.cantidad=0;
+        }
+        else{
         this.cantidad = cantidad;
-        notifyOrden();
+        }
+        notifyOrden();  //se tiene un notificar diferente para cada observador
             }
         
         
-        }
+        
     
     
 }

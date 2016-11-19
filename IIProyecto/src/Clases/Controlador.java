@@ -87,6 +87,7 @@ public class Controlador implements ActionListener,Observer{
             
             VistaFactura.v=new Ventanas.VistaOrden(VistaFactura.orden);
             VistaFactura.v.setVisible(true);
+            VistaFactura.v.salir.setEnabled(false);
             
         }
         
@@ -115,7 +116,7 @@ public class Controlador implements ActionListener,Observer{
     
     VistaFactura.nombre.setText(VistaFactura.restaurant.getNombre());
     VistaFactura.direccion.setText(VistaFactura.restaurant.getDireccion());
-    VistaFactura.fec.setText(String.valueOf(d.getDay())+" / "+String.valueOf(d.getMonth())+" / "+String.valueOf(d.getYear()));
+    VistaFactura.fec.setText(String.valueOf(d.getDate())+" / "+String.valueOf(d.getMonth()+1)+" / "+String.valueOf(d.getYear()+1900));
     VistaFactura.hora.setText(String.valueOf(d.getHours())+":"+String.valueOf(d.getMinutes())+":"+String.valueOf(d.getSeconds()));
     VistaFactura.tel.setText(VistaFactura.restaurant.getTelefono());
    
@@ -158,12 +159,19 @@ public class Controlador implements ActionListener,Observer{
                                 if (VistaFactura.tipoPa==1){
                                     
                                 VistaFactura.v.dispose();
+                                VistaFactura.v.salir.setEnabled(true);
                                 }
                             }
                             if (VistaFactura.tipoPa==1){
                              VistaFactura.v.dispose();
+                             VistaFactura.v.salir.setEnabled(true);
 
                             }
+                            VistaFactura.calc.setEnabled(false);
+                            VistaFactura.pagar.setEnabled(false);
+                            VistaFactura.agregar.setEnabled(false);
+                            VistaFactura.asignar.setEnabled(false);
+                            
                             JOptionPane.showMessageDialog(vista," Se ha cancelado la factura, el vuelto del cliente es de "+(String.valueOf(vueltos))+" colones"," Notificación de Sistema", 1);
  
                         }
@@ -252,6 +260,10 @@ public class Controlador implements ActionListener,Observer{
                 
             else{
                VistaFactura.total=this.total;
+                Object dat[]={" "," ","Subtotal",this.total+" Colones"};
+            //   Object datos[]={"Impuesto","6%","Monto Total",VistaFactura.total+" Colones"};
+            //this.total=0;
+               VistaFactura.tabla.addRow(dat);
                double impuesto=((VistaFactura.total/100)*6); //un impuesto del 6 por ciento
                 System.out.println(impuesto);
                 this.total+=impuesto;

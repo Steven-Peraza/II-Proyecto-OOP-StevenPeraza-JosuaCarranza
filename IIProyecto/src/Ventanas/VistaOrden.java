@@ -66,7 +66,6 @@ public class VistaOrden extends javax.swing.JFrame implements Observer{
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         elementos = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SU ORDEN");
@@ -79,7 +78,7 @@ public class VistaOrden extends javax.swing.JFrame implements Observer{
 
             },
             new String [] {
-                "Estado de Entrega", "Producto", "Cantidad a Consumir"
+                "Entrega", "Producto", "Cantidad ordenada"
             }
         ) {
             Class[] types = new Class [] {
@@ -100,10 +99,10 @@ public class VistaOrden extends javax.swing.JFrame implements Observer{
             elementos.getColumnModel().getColumn(0).setPreferredWidth(20);
         }
 
-        jButton1.setText("Salir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                salirActionPerformed(evt);
             }
         });
 
@@ -117,7 +116,7 @@ public class VistaOrden extends javax.swing.JFrame implements Observer{
                 .addContainerGap(91, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
@@ -132,7 +131,7 @@ public class VistaOrden extends javax.swing.JFrame implements Observer{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(salir)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -148,11 +147,11 @@ public class VistaOrden extends javax.swing.JFrame implements Observer{
     
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         // TODO add your handling code here:
         this.dispose();
         iiproyecto.main.ventana.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_salirActionPerformed
 
     private void elementosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elementosMouseClicked
         // TODO add your handling code here:
@@ -196,9 +195,9 @@ public class VistaOrden extends javax.swing.JFrame implements Observer{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable elementos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    public static final javax.swing.JButton salir = new javax.swing.JButton();
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -209,7 +208,7 @@ public class VistaOrden extends javax.swing.JFrame implements Observer{
             
             if (lista.get(i)==temp){        //si son el mismo objeto
                 
-                model.setValueAt(temp.getCantidad(), i, 2);
+                model.setValueAt(temp.getCantidad(), i, 2); //modificacion columna
                 break;
             }
             

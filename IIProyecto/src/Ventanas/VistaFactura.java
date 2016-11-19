@@ -124,10 +124,12 @@ public class VistaFactura extends javax.swing.JFrame{
         setTitle("VENTANA DE FACTURACIÓN");
         setBackground(new java.awt.Color(102, 102, 255));
 
-        nombre.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        nombre.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel1.setText("Dirección: ");
+
+        direccion.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel2.setText("Teléfono : ");
@@ -140,6 +142,10 @@ public class VistaFactura extends javax.swing.JFrame{
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel5.setText("Factura a nombre de:");
+
+        tel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+
+        client.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
 
         asignar.setText("Ingresar");
 

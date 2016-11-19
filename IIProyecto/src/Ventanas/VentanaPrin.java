@@ -97,14 +97,7 @@ public class VentanaPrin extends javax.swing.JFrame {
         
     }
     
-/*    public void asignaEventos(ControladorFactura controlador){
-    
-            botonPlato.addActionListener((ActionListener) controlador);
-            botonCedula.addActionListener((ActionListener) controlador);
-            combo.addActionListener((ActionListener)controlador);
-            botonBebida.addActionListener((ActionListener) controlador);
-    }
-*/
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -552,7 +545,7 @@ public class VentanaPrin extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(102, 255, 204));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nombre.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
         jLabel25.setText("Cantidad de Clientes");
 
@@ -1931,9 +1924,24 @@ public class VentanaPrin extends javax.swing.JFrame {
         botonPagar=false; //deshabilitar boton
         Orden temporal=restaurant.obtenerOrden(num); //obtener la orden asociada
         
-        if ((temporal.getEstado()!=false)&&(temporal.getDetalles().size()>0)){ //si la orden esta abierta
-        this.setVisible(false);
-        new Ventanas.VistaFactura(temporal.getMesa().getNumero(),tipoPago).setVisible(true); //se pasa como parametro la orden a la que se relaciona la mesa
+        if ((temporal.getEstado()!=false)&&(temporal.getDetalles().size()>0)){ //si la orden esta abierta y tiene elementos
+            
+            boolean est=true;  //se va a revisar que todos los productos de la orden hayan sido  entregados
+            for (int i=0;i<temporal.getDetalles().size();i++){
+                
+                if (temporal.getDetalles().get(i).getEstado()!=true){ //solo conque uno no haya sido entregado no se permite facturar
+                    est=false;
+                }
+            }
+            if (est==true){ //si todos ya se entregaron
+               this.setVisible(false);
+               new Ventanas.VistaFactura(temporal.getMesa().getNumero(),tipoPago).setVisible(true); //se pasa como parametro la orden a la que se relaciona la mesa 
+            }
+            //sino mostrar mensaje
+            else{
+                JOptionPane.showMessageDialog(this," Imposible facturar, algun producto no se ha entregado a la mesa " ," Alerta de sistema ", 0);
+            }
+            
         }
         
         
