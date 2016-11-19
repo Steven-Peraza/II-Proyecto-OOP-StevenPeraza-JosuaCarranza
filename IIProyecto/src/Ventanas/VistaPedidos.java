@@ -342,7 +342,7 @@ public class VistaPedidos extends javax.swing.JFrame {
                     
                     
                     model.removeRow(0);  //se elimina la fila
-                    enlace.sacarDecola();
+                    enlace.sacarDecola(); //se saca de la cola de pedidos
                     x++;
                 
          
