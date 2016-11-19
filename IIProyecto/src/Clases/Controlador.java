@@ -154,6 +154,7 @@ public class Controlador implements ActionListener,Observer{
                                 iiproyecto.main.restaurante.eliminarOrden(VistaFactura.orden.getMesa().getNumero()); //eliminar esa orden
                                 iiproyecto.main.restaurante.listaClientes.add(VistaFactura.client.getText());//agregando cliente a la lista de clientes
                                 //agregar nombre a lista aqui
+
                                 if (VistaFactura.tipoPa==1){
                                     
                                 VistaFactura.v.dispose();
@@ -161,6 +162,7 @@ public class Controlador implements ActionListener,Observer{
                             }
                             if (VistaFactura.tipoPa==1){
                              VistaFactura.v.dispose();
+
                             }
                             JOptionPane.showMessageDialog(vista," Se ha cancelado la factura, el vuelto del cliente es de "+(String.valueOf(vueltos))+" colones"," Notificación de Sistema", 1);
  
