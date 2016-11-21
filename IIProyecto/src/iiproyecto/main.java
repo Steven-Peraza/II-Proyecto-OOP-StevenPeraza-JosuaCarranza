@@ -26,7 +26,7 @@ public class main {
         // TODO code application logic here
         Cliente uno=fabrica.fabricarCliente("Andrey","232");
         
-        restaurante =new Restaurante(" "," JAVA CAFE RESTAURANT ","2460-32-45"," 50 mts este del parque central ","javarestaurant@gmail.com");
+        restaurante =new Restaurante(" "," DUKE's CAFE ","2460-32-45"," 50 mts este del parque central ","javarestaurant@gmail.com");
         restaurante.registrarCliente(uno);
         uno=fabrica.fabricarCliente("Ian Fabricio","123");
         restaurante.registrarCliente(uno);

@@ -86,9 +86,9 @@ public class VentanaPrin extends javax.swing.JFrame {
         mesa10.setText("Cap: " + String.valueOf(restaurant.getMesas().get(9).getCapacidad()));                                   
         mesa11.setText("Cap: " + String.valueOf(restaurant.getMesas().get(10).getCapacidad()));
          ImageIcon imag;
-        imag = new ImageIcon(getClass().getResource("/Imagenes/logo.png"));
+        imag = new ImageIcon(getClass().getResource("/Imagenes/duke-java.png"));
         Image photo = imag.getImage();
-        Image nueva= photo.getScaledInstance(155, 175, java.awt.Image.SCALE_SMOOTH);
+        Image nueva= photo.getScaledInstance(255, 175, java.awt.Image.SCALE_SMOOTH);
         ImageIcon icono= new ImageIcon(nueva);
         logo.setIcon(icono);
         logo.setSize(155, 200);
